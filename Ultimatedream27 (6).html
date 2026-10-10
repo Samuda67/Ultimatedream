@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="sv"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ultimatedream27</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;700;800&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#0a1a16;--pn:#12302a;--ink:#f1efe4;--mut:#8fb0a4;--gold:#e8c24a;--ln:#244a41}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Barlow,system-ui,sans-serif}
+h1,h2,h3,.d{font-family:'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:.02em}
+header{display:flex;flex-wrap:wrap;gap:6px 12px;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--ln);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+h1{margin:0;font-size:30px;font-weight:800}h1 b{color:var(--gold)}
+.coins{font:700 19px 'Barlow Condensed',sans-serif;color:var(--gold)}.mut{color:var(--mut)}
+nav{display:flex;gap:6px;padding:10px 16px;flex-wrap:wrap}
+nav button{flex:1;min-width:30%;padding:9px 4px;border:1px solid var(--ln);background:none;color:var(--mut);font:700 16px 'Barlow Condensed',sans-serif;border-radius:6px;cursor:pointer}
+nav button.on{background:var(--gold);color:#1a1503;border-color:var(--gold)}
+main{padding:8px 16px 40px;max-width:900px;margin:auto}
+h2{font-size:26px;margin:14px 0 8px}h3{font-size:18px;margin:8px 0 4px;color:var(--mut)}
+.btn{background:var(--gold);color:#1a1503;border:0;padding:10px 16px;font:800 18px 'Barlow Condensed',sans-serif;border-radius:6px;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}.btn.g{background:none;border:1px solid var(--ln);color:var(--ink)}.btn.on{outline:2px solid #fff}
+button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.packs{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.pack{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:14px;text-align:center}
+.pk{height:100px;border-radius:8px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;font:800 26px 'Barlow Condensed';color:#1a1503;transform:rotate(-3deg);padding:0 6px}
+.pack p{margin:4px 0 8px;color:var(--mut);font-size:14px;min-height:36px}
+.qty{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px}.qty b{font:800 24px 'Barlow Condensed';min-width:28px}.qty .btn{padding:4px 14px}
+.cards{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.card{width:96px;height:196px;border-radius:12px 12px 30px 30px;padding:6px 4px;text-align:center;color:#1a1503;position:relative;cursor:pointer;border:2px solid rgba(0,0,0,.25);display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+.card .r{font:800 30px/1 'Barlow Condensed'}.card .p{font:700 14px 'Barlow Condensed'}.card .f{font-size:26px}
+.card .n{font:700 13px 'Barlow Condensed';width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 4px}
+.bronze{background:linear-gradient(#d49a6a,#9c6335)}.silver{background:linear-gradient(#e3eaee,#aab6bd)}.gold{background:linear-gradient(#f4d96b,#c9a02a)}
+.rare{background:linear-gradient(#7ff0e6,#1fa89f)}.icon{background:linear-gradient(135deg,#fff3c4,#e8c24a 45%,#f6e7a8 70%,#b8902a);box-shadow:0 0 18px #e8c24aaa}
+.totw{background:linear-gradient(#2a2f45,#0b0e1c);color:#f2d36b;border-color:#f2d36b}
+.futties{background:linear-gradient(#ff7ad9,#6a3df0);color:#fff;box-shadow:0 0 16px #c04ef099}
+.hero{background:linear-gradient(#ffb347,#c8332b);color:#1a0a03}
+.star{background:linear-gradient(#b8ff6a,#13a35a);color:#06210f;box-shadow:0 0 14px #5cff8f88}.mast{background:linear-gradient(#ff5d5d,#7a0b3a);color:#fff;box-shadow:0 0 14px #ff5d5d88}
+.sb{display:flex;flex-direction:column;gap:4px;width:96px;margin-top:4px}.sb .btn{padding:4px 2px;font-size:13px;width:100%}
+.lst{display:flex;gap:12px;background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:10px;margin:8px 0}.lst .card{flex:none}
+.li{display:grid;gap:4px;align-content:start;font:600 15px Barlow,sans-serif}.li label{display:grid;gap:2px}
+.li input,.li select{background:#0a1a16;color:var(--ink);border:1px solid var(--ln);border-radius:6px;padding:6px;font:600 15px Barlow,sans-serif;width:130px}
+.back{background:repeating-linear-gradient(45deg,#1a4a3f,#1a4a3f 8px,#12302a 8px,#12302a 16px);color:var(--gold);font:800 34px 'Barlow Condensed';justify-content:center}
+.card.flip{animation:fl .35s}@keyframes fl{from{transform:rotateY(90deg)}to{transform:none}}
+@media(prefers-reduced-motion:reduce){.card.flip{animation:none}}
+.sell{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);font-size:12px;white-space:nowrap}
+.cl{margin-bottom:14px}.cl .card{cursor:default}
+.pitch{position:relative;height:540px;background:linear-gradient(#1d6b45,#165a39);border:2px solid #e8efe9aa;border-radius:10px;margin:10px 0;overflow:hidden}
+.pitch:before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px solid #ffffff66}
+.slot{position:absolute;transform:translate(-50%,-50%);width:66px;height:94px;border:2px dashed #ffffff77;border-radius:8px;display:flex;align-items:center;justify-content:center;font:700 16px 'Barlow Condensed';color:#ffffffbb}
+.slot.cur{border-color:var(--gold);color:var(--gold)}
+.slot .card,.sm .card{width:66px;height:94px;border-radius:8px 8px 20px 20px;padding:3px 2px;cursor:default}
+.slot .card .r,.sm .card .r{font-size:20px}.slot .card .p,.sm .card .p{font-size:11px}.slot .card .f,.sm .card .f{font-size:17px}.slot .card .n,.sm .card .n{font-size:11px;padding:0 2px}
+.st{display:grid;grid-template-columns:repeat(3,1fr);width:100%;font:600 8px 'Barlow Condensed';line-height:1.05}.st span{display:flex;flex-direction:column}.st b{font-size:13px;font-weight:800}.pss{font-size:13px;line-height:1;letter-spacing:2px}
+.slot .card .st,.sm .card .st{display:none}.slot .card .pss,.sm .card .pss{position:absolute;top:2px;right:2px;font-size:10px;letter-spacing:0}
+.sm{gap:6px;justify-content:flex-start}.ext{display:grid;gap:4px}
+.board{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:16px;text-align:center}
+.sc{font:800 56px 'Barlow Condensed';display:flex;justify-content:center;gap:18px;align-items:center}.sc small{font-size:18px;color:var(--mut);font-weight:600;max-width:120px}
+.clk{font:700 22px 'Barlow Condensed';color:var(--gold)}.log{max-height:230px;overflow:auto;text-align:left;margin-top:10px}.log div{padding:5px 8px;border-bottom:1px solid var(--ln)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.res{background:var(--pn);border:1px solid var(--ln);border-radius:8px;padding:10px 14px;margin:6px 0;font:700 20px 'Barlow Condensed'}.w{color:#6fe39a}.l{color:#ff8a7a}
+.dv{margin:6px 0;font:700 20px 'Barlow Condensed'}.bar{height:7px;background:var(--ln);border-radius:4px;overflow:hidden;margin-top:3px}.bar i{display:block;height:100%;background:var(--gold)}
+.ob{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:12px;margin:8px 0}.ob b{font:700 20px 'Barlow Condensed'}.ob.dn{border-color:var(--gold)}
+.rw{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}.rw span{background:#0a1a16;border:1px solid var(--ln);border-radius:6px;padding:2px 8px;font-size:14px}
+.mode{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:14px}.mode h3{color:var(--gold);font-size:24px;margin:0 0 4px}
+.ls{background:var(--pn);color:var(--ink);border:1px solid var(--ln);border-radius:6px;padding:4px;font:600 14px Barlow,sans-serif;max-width:120px}
+.pl,#ball{transition:transform .45s linear}.pl circle{stroke:#0008;stroke-width:1}.pl text{font:800 9px 'Barlow Condensed',sans-serif;fill:#111;text-anchor:middle}.pl .pn{fill:#fff;font-size:8px;paint-order:stroke;stroke:#000a;stroke-width:2px}.pl.off{opacity:.15}
+.fx{font:800 44px 'Barlow Condensed',sans-serif;fill:#fff;paint-order:stroke;stroke:#000b;stroke-width:5px;opacity:0;transition:opacity .2s;text-anchor:middle}.fx.on{opacity:1}
+.stt{width:100%;border-collapse:collapse;margin:6px 0;font:600 16px Barlow,sans-serif}.stt td,.stt th{padding:3px 6px;border-bottom:1px solid var(--ln)}.stt td{width:20%;text-align:center}.stt th{color:var(--mut);font-weight:600}
+.mn{color:var(--gold);font-weight:700}
+</style></head><body>
+<header><h1>Ultimate<b>dream</b>27</h1><div style="display:flex;gap:10px;align-items:center"><select id="langsel" class="ls" data-h="setLang" aria-label="Language"></select><div class="coins" id="coins"></div></div></header>
+<nav id="nav"></nav><main id="app"></main>
+<script>
+/*IIFE_START*/(()=>{
+const LANGS=[['sv','🇸🇪','Svenska'],['en','🇬🇧','English'],['de','🇩🇪','Deutsch'],['es','🇪🇸','Español'],['fr','🇫🇷','Français'],['it','🇮🇹','Italiano'],['no','🇳🇴','Norsk'],['fi','🇫🇮','Suomi'],['is','🇮🇸','Íslenska']];
+const LOC={sv:'sv-SE',en:'en-GB',de:'de-DE',es:'es-ES',fr:'fr-FR',it:'it-IT',no:'nb-NO',fi:'fi-FI',is:'is-IS'};
+const UN={sv:['d','h','min'],en:['d','h','min'],de:['T','Std','Min'],es:['d','h','min'],fr:['j','h','min'],it:['g','h','min'],no:['d','t','min'],fi:['pv','t','min'],is:['d','klst','mín']};
+let CURL='sv';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const NAT=['🇸🇪','🇧🇷','🇫🇷','🇪🇸','🇩🇪','🇦🇷','🇵🇹','🇳🇬','🇯🇵','🇳🇱','🇮🇹','🇬🇭'];
+const NM={'🇸🇪':[['Erik','Lars','Oskar','Anders','Johan','Viktor','Filip','Emil','Mikael','Henrik'],['Andersson','Johansson','Lindqvist','Karlsson','Nilsson','Eriksson','Larsson','Olsson','Persson','Svensson']],
+'🇧🇷':[['Lucas','Gabriel','Rafael','Thiago','Matheus','Bruno','Felipe','Carlos','Diego','Vinícius'],['Silva','Santos','Oliveira','Souza','Pereira','Costa','Ferreira','Rodrigues','Almeida','Barbosa']],
+'🇫🇷':[['Léo','Théo','Hugo','Antoine','Julien','Maxime','Nicolas','Mathieu','Romain','Kévin'],['Martin','Bernard','Dubois','Moreau','Laurent','Lefèbvre','Fontaine','Girard','Rousseau','Mercier']],
+'🇪🇸':[['Álvaro','Sergio','Pablo','Diego','Javier','Iván','Adrián','Raúl','Carlos','Marcos'],['García','Fernández','López','Martínez','Sánchez','Romero','Navarro','Torres','Molina','Ortega']],
+'🇩🇪':[['Lukas','Jonas','Felix','Tobias','Maximilian','Leon','Florian','Moritz','Kai','Jan'],['Müller','Schmidt','Schneider','Fischer','Weber','Wagner','Becker','Hoffmann','Koch','Richter']],
+'🇦🇷':[['Matías','Nicolás','Lucas','Facundo','Santiago','Franco','Gonzalo','Emiliano','Ezequiel','Ignacio'],['Fernández','Gómez','Pérez','Rodríguez','Acosta','Benítez','Molina','Sosa','Medina','Herrera']],
+'🇵🇹':[['João','Pedro','Rui','Tiago','Bruno','Diogo','André','Rafael','Miguel','Nuno'],['Silva','Santos','Ferreira','Pereira','Carvalho','Moreira','Gomes','Martins','Teixeira','Correia']],
+'🇳🇬':[['Emeka','Chinedu','Tunde','Ikenna','Ayodele','Obinna','Kelechi','Segun','Femi','Chidi'],['Okafor','Adeyemi','Okonkwo','Balogun','Eze','Ibrahim','Nwosu','Adebayo','Obi','Musa']],
+'🇯🇵':[['Haruto','Takumi','Ren','Sota','Yuto','Kaito','Daichi','Riku','Shun','Hiroshi'],['Tanaka','Sato','Suzuki','Takahashi','Watanabe','Ito','Yamamoto','Nakamura','Kobayashi','Kato']],
+'🇳🇱':[['Daan','Sven','Bram','Thijs','Joris','Ruben','Lars','Jesse','Niels','Stijn'],['de Jong','van Dijk','Bakker','Visser','Smit','Meijer','de Boer','Mulder','Bos','Vos']],
+'🇮🇹':[['Marco','Luca','Matteo','Andrea','Davide','Federico','Simone','Alessandro','Giorgio','Lorenzo'],['Rossi','Russo','Ferrari','Esposito','Bianchi','Romano','Colombo','Ricci','Marino','Greco']],
+'🇬🇭':[['Kwame','Kofi','Yaw','Kwesi','Nana','Emmanuel','Samuel','Isaac','Daniel','Abdul'],['Mensah','Owusu','Asante','Boateng','Appiah','Agyeman','Osei','Amoah','Darko','Tetteh']]};
+const ICONS=[['🇸🇪','L. Ekström','CM',97],['🇧🇷','R. Almeida','CAM',99],['🇫🇷','T. Delacroix','ST',98],['🇪🇸','A. Montalvo','CM',98],['🇩🇪','K. Brandt','CB',97],['🇦🇷','D. Ferreyra','CAM',99],['🇵🇹','J. Cardoso','LW',98],['🇳🇬','E. Okonkwo','ST',97],['🇯🇵','H. Takeda','CM',97],['🇳🇱','J. van der Meer','GK',98],['🇮🇹','G. Moretti','CB',97],['🇬🇭','K. Mensah','CM',98]].map(([f,n,pos,r])=>({f,n,pos,r}));
+const POS=['GK','LB','CB','CB','RB','CM','CM','CAM','LW','RW','ST','ST'],POSM=[...POS,'MGR'];
+const KN={futties:'Futties',totw:'Team of the Week',hero:'Hjälte',icon:'Ikon',star:'Stjärnskott',mast:'Mästare'};
+const DIV=[10,9,8,7,6,5,4,3,2,1].map(n=>'Div '+n).concat('Elitdivision');
+const FORMS={
+'4-3-3':[['GK',50,91],['LB',14,70],['CB',38,72],['CB',62,72],['RB',86,70],['CM',22,48],['CM',50,52],['CM',78,48],['LW',16,22],['ST',50,15],['RW',84,22]],
+'4-4-2':[['GK',50,91],['LB',14,70],['CB',38,72],['CB',62,72],['RB',86,70],['LW',14,46],['CM',38,50],['CM',62,50],['RW',86,46],['ST',36,18],['ST',64,18]],
+'4-2-3-1':[['GK',50,91],['LB',14,70],['CB',38,72],['CB',62,72],['RB',86,70],['CM',36,54],['CM',64,54],['LW',16,32],['CAM',50,34],['RW',84,32],['ST',50,13]],
+'3-5-2':[['GK',50,91],['CB',26,72],['CB',50,72],['CB',74,72],['LB',10,50],['CM',30,50],['CM',50,54],['CM',70,50],['RB',90,50],['ST',36,18],['ST',64,18]],
+'5-3-2':[['GK',50,91],['LB',10,66],['CB',30,74],['CB',50,72],['CB',70,74],['RB',90,66],['CM',26,46],['CM',50,50],['CM',74,46],['ST',36,18],['ST',64,18]],
+'4-1-4-1':[['GK',50,91],['LB',14,70],['CB',38,72],['CB',62,72],['RB',86,70],['CM',50,54],['LW',14,36],['CM',38,36],['CM',62,36],['RW',86,36],['ST',50,13]]};
+Object.assign(FORMS,{
+'3-4-3':[['GK',50,91],['CB',26,72],['CB',50,72],['CB',74,72],['LB',10,52],['CM',38,52],['CM',62,52],['RB',90,52],['LW',16,22],['ST',50,15],['RW',84,22]],
+'3-4-1-2':[['GK',50,91],['CB',26,72],['CB',50,72],['CB',74,72],['LB',10,52],['CM',38,54],['CM',62,54],['RB',90,52],['CAM',50,34],['ST',36,15],['ST',64,15]],
+'3-4-2-1':[['GK',50,91],['CB',26,72],['CB',50,72],['CB',74,72],['LB',10,52],['CM',38,54],['CM',62,54],['RB',90,52],['LW',30,32],['RW',70,32],['ST',50,13]],
+'5-4-1':[['GK',50,91],['LB',10,66],['CB',30,74],['CB',50,72],['CB',70,74],['RB',90,66],['LW',14,44],['CM',38,46],['CM',62,46],['RW',86,44],['ST',50,16]],
+'5-2-1-2':[['GK',50,91],['LB',10,66],['CB',30,74],['CB',50,72],['CB',70,74],['RB',90,66],['CM',36,52],['CM',64,52],['CAM',50,34],['ST',36,15],['ST',64,15]],
+'5-2-3':[['GK',50,91],['LB',10,66],['CB',30,74],['CB',50,72],['CB',70,74],['RB',90,66],['CM',36,52],['CM',64,52],['LW',16,22],['ST',50,15],['RW',84,22]]});
+const PAIRS=[['CM','CAM'],['LB','RB'],['LW','RW']];
+const okPos=(a,b)=>a===b||PAIRS.some(([x,y])=>(a===x&&b===y)||(a===y&&b===x));
+const P=(cat,n,p,a,b,o)=>({cat,n,p,a,b,c:10,k:[['n',1]],...o});
+const PACKS=[
+P('Standard','Bronspack',3000,55,69,{bg:'#c98550'}),
+P('Standard','Mixpack',6000,55,80,{bg:'linear-gradient(#c98550,#c3ccd1,#e8c24a)'}),
+P('Standard','Silverpack',10000,62,76,{bg:'#c3ccd1'}),
+P('Standard','Guldpack',24000,70,84,{bg:'#e8c24a'}),
+P('Standard','Rare guldpack',40000,76,88,{bg:'linear-gradient(#f4d96b,#7ff0e6)'}),
+P('Standard','Elitpack',60000,78,93,{bg:'#7ff0e6'}),
+P('Standard','Superelitpack',120000,84,96,{bg:'linear-gradient(135deg,#7ff0e6,#1fa89f)'}),
+P('Standard','Bulkpack',12000,55,75,{c:20,bg:'#9aa9a3',x:'20 kort'}),
+P('Standard','Megapack',100000,75,88,{c:20,bg:'linear-gradient(#e8c24a,#7ff0e6)',x:'20 kort'}),
+P('Standard','Midnattspack',35000,70,88,{sk:1.2,bg:'linear-gradient(#1b2a6b,#6b3fa0)',tc:'#fff'}),
+P('Position & manager','Målvaktspack',20000,72,90,{bg:'#8fd16a',pos:['GK']}),
+P('Position & manager','Försvarspack',30000,74,90,{bg:'#6aa8d1',pos:['CB','CB','LB','RB']}),
+P('Position & manager','Mittfältspack',30000,74,90,{bg:'#d1a86a',pos:['CM','CM','CAM']}),
+P('Position & manager','Anfallarpack',30000,74,90,{bg:'#d16a6a',pos:['ST','ST','LW','RW']}),
+P('Position & manager','Managerpack',50000,70,92,{bg:'#b79cf0',pos:['MGR']}),
+P('Position & manager','Hattrick-pack',90000,86,95,{c:6,bg:'linear-gradient(#ff7a7a,#7a0b0b)',pos:['ST','ST','LW','RW'],x:'bara anfallare'}),
+P('Position & manager','Muren',70000,85,94,{c:8,bg:'linear-gradient(#6aa8d1,#10304a)',pos:['GK','CB','CB','LB','RB'],x:'försvar och målvakt'}),
+P('Position & manager','Maestro-pack',85000,86,95,{c:8,bg:'linear-gradient(#e0b878,#5a3a10)',pos:['CM','CAM'],x:'bara mittfältare'}),
+P('Position & manager','Tränarpack Elit',120000,85,95,{c:5,bg:'linear-gradient(#b79cf0,#2b1a6b)',pos:['MGR'],x:'bara tränare'}),
+...[['🇧🇷','Brasilienpack','linear-gradient(#2fb344,#f7d23a)'],['🇸🇪','Sverigepack','linear-gradient(#1f6fd1,#ffd34d)','#fff'],['🇫🇷','Frankrikepack','linear-gradient(90deg,#2a4bb8,#f1efe4,#d1342b)'],['🇪🇸','Spanienpack','linear-gradient(#c8342b,#ffd34d,#c8342b)'],['🇦🇷','Argentinapack','linear-gradient(#74c2f0,#fff,#74c2f0)'],['🇩🇪','Tysklandpack','linear-gradient(#222,#d1342b,#ffd34d)','#fff'],['🇵🇹','Portugalpack','linear-gradient(90deg,#1a8f4a,#d1342b)','#fff'],['🇳🇬','Nigeriapack','linear-gradient(#1a8f4a,#f1efe4,#1a8f4a)'],['🇯🇵','Japanpack','linear-gradient(#f1efe4,#d1342b)'],['🇳🇱','Nederländernapack','linear-gradient(#d1342b,#f1efe4,#2a4bb8)'],['🇮🇹','Italienpack','linear-gradient(90deg,#1a8f4a,#f1efe4,#d1342b)'],['🇬🇭','Ghanapack','linear-gradient(#d1342b,#ffd34d,#1a8f4a)']].map(([f,n,bg,tc])=>P('Nationer',n,45000,78,92,{nat:f,bg,tc,x:'alla från samma land · 1,2 % chans på landets ikon'})),
+P('Teman','Mysterypack',25000,55,94,{sk:1,bg:'repeating-linear-gradient(45deg,#3b2a6b,#3b2a6b 10px,#241846 10px,#241846 20px)',tc:'#e8c24a',x:'allt kan hända'}),
+P('Teman','Guldregn',80000,80,90,{sk:1,bg:'linear-gradient(#ffe27a,#b7860b)',x:'tio starka guldkort'}),
+P('Teman','Jackpotpack',200000,84,96,{sk:.7,bg:'linear-gradient(#ff5d5d,#ffd34d,#2fd27a)',x:'tungt mot höga kort'}),
+P('Teman','Startelvapack',120000,78,92,{c:12,seq:1,pos:['GK','LB','CB','CB','RB','CM','CM','CM','LW','ST','RW','MGR'],bg:'linear-gradient(#1d6b45,#0f3d28)',tc:'#fff',x:'en per position + tränare'}),
+P('Teman','Världspack',150000,85,93,{c:12,sk:1,nats:NAT,bg:'linear-gradient(#2a4bb8,#2fb344,#ffd34d)',x:'ett kort från varje land'}),
+P('Special','Hjältepack',90000,84,95,{bg:'linear-gradient(#ffb347,#c8332b)',x:'hjältekort',k:[['hero',70],['n',30]]}),
+P('Special','Team of the Week',100000,85,99,{bg:'linear-gradient(#2a2f45,#0b0e1c)',tc:'#f2d36b',x:'TOTW-kort',k:[['totw',70],['n',30]]}),
+P('Special','Ikonpack',120000,88,99,{bg:'linear-gradient(135deg,#fff3c4,#e8c24a,#b8902a)',x:'ikonkort',k:[['icon',60],['n',40]]}),
+P('Special','Futties-pack',150000,87,99,{bg:'linear-gradient(#ff7ad9,#6a3df0)',tc:'#fff',x:'guld, Futties & specialkort',k:[['n',40],['futties',40],['totw',10],['hero',6],['icon',4]]}),
+P('Special','Hjälte Premium',160000,88,96,{bg:'linear-gradient(#ffd27a,#8f1d17)',x:'nästan bara hjältekort',k:[['hero',85],['n',15]]}),
+P('Special','Stjärnskott-pack',130000,85,96,{bg:'linear-gradient(#b8ff6a,#13a35a)',x:'stjärnskottskort',k:[['star',75],['n',25]]}),
+P('Special','Mästarpack',170000,87,96,{bg:'linear-gradient(#ff5d5d,#7a0b3a)',tc:'#fff',x:'mästarkort',k:[['mast',75],['n',25]]}),
+P('Special','TOTW Plus',220000,88,99,{bg:'linear-gradient(#3a4166,#05060d)',tc:'#f2d36b',x:'nästan bara TOTW-kort',k:[['totw',90],['n',10]]}),
+P('Special','Futties Plus',300000,90,99,{bg:'linear-gradient(#ff9be8,#3d1fb8)',tc:'#fff',x:'Futties, TOTW, hjältar & ikoner',k:[['futties',55],['totw',20],['hero',10],['icon',10],['n',5]]}),
+P('Special','Playstyle-pack',400000,93,96,{c:6,sk:1,fps:1,bg:'linear-gradient(#7ff0e6,#6a3df0,#ff7ad9)',x:'alla kort har playstyle'}),
+...['Hjälte','TOTW','Futties','Ikon'].map((n,i)=>P('Legendary',n+' Legend',750000,90,99,{tp:.02,sk:1,bg:['linear-gradient(#ffd27a,#8f1d17,#2b0505)','linear-gradient(#4a5290,#000)','linear-gradient(#ff9be8,#1d0a6b)','linear-gradient(135deg,#fff3c4,#e8c24a,#7a5a10)'][i],tc:i===1?'#f2d36b':i===2?'#fff':'',x:['hjältekort','TOTW-kort','Futties-kort','ikonkort'][i],k:[[['hero',1],['totw',1],['futties',90],['icon',1]][i]].concat(i===2?[['icon',10]]:[])}))];
+PACKS.forEach(p=>{p.p*=p.cat==='Special'||p.cat==='Legendary'?9:3});
+PACKS.push(
+{cat:'Spelarval',n:'Guldval',p:75000,a:75,b:86,c:5,pick:1,pos:POS,k:[['n',1]],bg:'linear-gradient(#ffe27a,#b7860b)',x:'bra guldkort'},
+{cat:'Spelarval',n:'Elitval',p:300000,a:85,b:92,c:5,pick:1,pos:POS,k:[['n',1]],bg:'linear-gradient(#7ff0e6,#1fa89f)',x:'elitkort'},
+{cat:'Spelarval',n:'Landsval',p:450000,a:82,b:92,c:5,pick:1,pos:POS,nat:'*',sk:1,k:[['n',1]],bg:'linear-gradient(#2a4bb8,#2fb344,#ffd34d)',tc:'#fff',x:'alla från samma slumpade land'},
+{cat:'Spelarval',n:'Specialval',p:2500000,a:88,b:95,c:5,pick:1,pos:POS,sk:1,k:[['futties',25],['totw',25],['hero',20],['star',15],['mast',15]],bg:'linear-gradient(#ff7ad9,#6a3df0,#13a35a)',tc:'#fff',x:'specialkort'},
+{cat:'Spelarval',n:'Legendval 97–99',p:10000000,a:97,b:99,c:5,nr:[3,10],o97:1,pick:1,pos:POS,k:[['icon',40],['futties',20],['totw',15],['hero',10],['star',8],['mast',7]],bg:'linear-gradient(135deg,#fff3c4,#e8c24a,#ff7ad9,#6a3df0)',x:'bara 97–99'});
+const CATS=[['Standard','Vanliga pack med olika ratingspann'],['Position & manager','Alla kort har samma position'],['Nationer','Alla kort kommer från samma land'],['Teman','Pack med egna regler'],['Special','Specialkort och chans på 97–99'],['Legendary','De raraste packen: bara 2 % chans på 97, 98 eller 99'],['Spelarval','Välj 1 spelare ur ett urval. Du behåller bara den du väljer']];
+const SN=['PAC','SHO','PAS','DRI','DEF','PHY'],GKL=['DIV','HAN','KIC','REF','SPE','POS'];
+const OFF={GK:[2,1,-3,2,-25,1],CB:[-8,-28,-10,-14,5,5],LB:[3,-18,-3,-3,-2,-3],RB:[3,-18,-3,-3,-2,-3],CM:[-6,-6,3,0,-8,-4],CAM:[-3,-2,4,5,-25,-14],LW:[5,-2,-4,5,-30,-14],RW:[5,-2,-4,5,-30,-14],ST:[2,4,-10,-1,-35,-2]};
+const PS={pow:['💥','Kraftskott'],fin:['🌀','Finess'],tec:['🎩','Teknisk'],rap:['⚡','Snabbstart'],inc:['🧭','Vasspass'],air:['🪽','Luftmästare'],blk:['🛡️','Blockering'],tkl:['🦵','Tacklare'],fgk:['🧤','Lång räckvidd']};
+const PSP={GK:['fgk'],CB:['air','blk','tkl'],LB:['rap','tkl','tec'],RB:['rap','tkl','tec'],CM:['inc','tec','tkl'],CAM:['tec','inc','fin'],LW:['rap','tec','fin','pow'],RW:['rap','tec','fin','pow'],ST:['pow','fin','rap','tec']};
+const AN=[[50,50],[60,300],[70,1200],[75,2500],[80,4000],[85,7000],[87,12000],[88,18000],[90,40000],[92,100000],[93,170000],[94,300000],[95,500000],[96,900000],[97,1800000],[98,3000000],[99,5000000]];
+const QS=.02;
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1)),pk=a=>a[rnd(0,a.length-1)],fmt=n=>Math.round(n).toLocaleString(LOC[CURL]||'sv-SE');
+const tier=r=>r>=82?'rare':r>=75?'gold':r>=65?'silver':'bronze';
+let uid=0;
+const nmf=f=>{const[a,b]=NM[f]||NM[NAT[0]];return pk(a)[0]+'. '+pk(b)};
+const pl=()=>{const f=pk(NAT);return{n:nmf(f),f}};
+const mkS=c=>c.pos==='MGR'?null:OFF[c.pos].map(o=>Math.max(30,Math.min(99,c.r+o+rnd(-4,4))));
+function mkPS(c,force){if(c.r<93||c.pos==='MGR'||(!force&&Math.random()>.85))return[];const n=Math.min(PSP[c.pos].length,1+(c.r>=95&&Math.random()<.6?1:0)+(c.r>=97&&Math.random()<.6?1:0)),a=[...PSP[c.pos]],o=[];while(o.length<n)o.push(a.splice(rnd(0,a.length-1),1)[0]);return o}
+const mkM=()=>{const x=Math.random();return x<.75?1:x<.93?+(1.1+Math.random()*.2).toFixed(2):x<.99?+(1.3+Math.random()*.4).toFixed(2):+(1.7+Math.random()*.5).toFixed(2)};
+const fix=c=>{if(c&&c.s===undefined){c.s=mkS(c);c.ps=mkPS(c);c.m=c.m||mkM()}return c};
+const nid=()=>Date.now().toString(36)+'-'+(++uid).toString(36)+Math.random().toString(36).slice(2,5);
+function icn(t){const c=fix({id:nid(),pos:t.pos,r:t.r,k:'icon',n:t.n,f:t.f});c.ps=mkPS(c,true);return c}
+function mkc(pos,r,k,f){if(k==='icon'&&r>=97){const o=ICONS.filter(t=>t.r===r);return icn(pk(o.length?o:ICONS))}const fl=f||pk(NAT);return fix({id:nid(),pos,r,k,n:nmf(fl),f:fl})}
+const val=c=>{const r=Math.max(50,Math.min(99,c.r));let i=1;while(AN[i][0]<r)i++;const[a,x]=AN[i-1],[b,y]=AN[i],v=x*Math.pow(y/x,(r-a)/(b-a))*(c.k?1.2:1)*(c.m||1)*(1+.08*(c.ps?c.ps.length:0)),u=v>1e5?1000:v>2000?100:10;return Math.round(v/u)*u};
+const sellP=c=>Math.round(val(c)*QS/10)*10;
+const DICT=`/*DICT*/`;
+let DR=null;const TRC={};
+const rx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function trb(l){const ix=LANGS.findIndex(x=>x[0]===l);if(ix<1)return null;if(TRC[l])return TRC[l];
+ if(!DR)DR=DICT.split('\n').filter(x=>x.trim()).map(x=>x.split('|'));
+ const ex=new Map(),tp=[],fr=[];
+ DR.forEach(r=>{const a=r[0],b=r[ix];if(!b)return;if(a.includes('{}'))tp.push([new RegExp('^'+rx(a).replace(/\\\{\\\}/g,'(.+?)')+'$','s'),b]);else{ex.set(a,b);fr.push(a)}});
+ fr.sort((x,y)=>y.length-x.length);
+ return TRC[l]={ex,tp,fre:fr.length?new RegExp('(?<![\\p{L}\\p{N}])('+fr.map(rx).join('|')+')(?![\\p{L}\\p{N}])','gu'):null}}
+function tr(s,l){const D=trb(l);if(!D)return s;const k=s.trim();if(!k)return s;let r=D.ex.get(k);
+ if(r===undefined){for(const[re,b]of D.tp){const m=k.match(re);if(m){const ps=m.slice(1).map(x=>tr(x,l));let i=0;r=b.replace(/\{(\d*)\}/g,(_,n)=>n?ps[n-1]:ps[i++]);break}}}
+ if(r===undefined&&D.fre){const t=k.replace(D.fre,x=>D.ex.get(x));if(t!==k)r=t}
+ if(r===undefined)return s;return s.match(/^\s*/)[0]+r+s.match(/\s*$/)[0]}
+function i18n(root){if(!root||CURL==='sv')return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),L=[];let n;while(n=w.nextNode())L.push(n);
+ for(const t of L){const p=t.parentNode;if(p&&/^(SCRIPT|STYLE|OPTION|TEXTAREA)$/.test(p.nodeName))continue;const v=t.nodeValue;if(!/\p{L}/u.test(v))continue;const r=tr(v,CURL);if(r!==v)t.nodeValue=r}
+ root.querySelectorAll('[placeholder],[title],[aria-label]').forEach(e=>{['placeholder','title','aria-label'].forEach(a=>{const v=e.getAttribute(a);if(v){const r=tr(v,CURL);if(r!==v)e.setAttribute(a,r)}})})}
+function vLang(){return `<h2>Välj språk / Choose language</h2><div class="board"><div class="packs">${LANGS.map(([c,f,n])=>`<button class="btn g" style="font-size:22px;padding:14px" data-c="pickLang" data-a='["${c}"]'>${f} ${n}</button>`).join('')}</div></div>`}
+function pickLang(c){if(!LANGS.some(x=>x[0]===c))return;S.lang=c;save();render()}
+function setLang(...a){pickLang(a[a.length-1])}
+const KEY='madfut28',VER=8,LEG=Date.UTC(2026,9,24),SALT='m28|'+(7*191)+'|fut';
+const hz=(s,sd=7)=>{let a=0xdeadbeef^sd,b=0x41c6ce57^sd;for(let i=0,c;i<s.length;i++){c=s.charCodeAt(i);a=Math.imul(a^c,2654435761);b=Math.imul(b^c,1597334677)}a=Math.imul(a^a>>>16,2246822507)^Math.imul(b^b>>>13,3266489909);b=Math.imul(b^b>>>16,2246822507)^Math.imul(a^a>>>13,3266489909);return(4294967296*(2097151&b)+(a>>>0)).toString(36)};
+const defS=()=>({coins:0,user:'',lang:'',bg:0,pend:[],club:[],pts:{on:0,bt:0},bids:{},got:{},paid:{},npcB:{},done:{},packs:[],sq:{form:'4-3-3',x:[],b:[],r:[],m:null},team:null,ob:null,ch:null,v3:1,ver:VER});
+const vc=c=>c&&typeof c==='object'&&typeof c.id==='string'&&POSM.includes(c.pos)&&Number.isFinite(c.r)&&c.r>=40&&c.r<=99&&typeof c.n==='string'&&(!c.k||!!KN[c.k]);
+const num=(v,d=0,max=1e12)=>Number.isFinite(v)&&v>=0?Math.min(v,max):d;
+function sane(o){const s={...defS(),...o};
+ s.coins=num(s.coins,0);s.v3=1;if((o.ver||0)<8){s.bg=1;if(!o.v3)s.coins=Math.max(s.coins,200000)}
+ s.user=typeof s.user==='string'?s.user.replace(/[^\p{L}\p{N}_\- ]/gu,'').trim().slice(0,16):'';s.bg=s.bg?1:0;s.lang=LANGS.some(x=>x[0]===s.lang)?s.lang:'';
+ s.pend=(Array.isArray(s.pend)?s.pend:[]).map(t=>t&&PACKS.some(p=>p.n===t.n)&&Array.isArray(t.opts)?{n:t.n,opts:t.opts.filter(vc).slice(0,10).map(fix)}:null).filter(t=>t&&t.opts.length).slice(0,50);
+ s.club=(Array.isArray(s.club)?s.club:[]).filter(vc).slice(0,5000);
+ s.pts={on:num(s.pts&&s.pts.on),bt:num(s.pts&&s.pts.bt)};
+ ['bids','got','paid','npcB','done'].forEach(k=>{if(!s[k]||typeof s[k]!=='object'||Array.isArray(s[k]))s[k]={}});
+ s.packs=(Array.isArray(s.packs)?s.packs:[]).filter(n=>PACKS.some(p=>p.n===n)).slice(0,500);
+ if(!(s.sq&&FORMS[s.sq.form]))s.sq=defS().sq;
+ ['x','b','r'].forEach(k=>{if(!Array.isArray(s.sq[k]))s.sq[k]=[]});
+ const T=s.team,tl=Array.isArray(T)?T:T&&Array.isArray(T.x)?T.x:null;if(T&&!(tl&&tl.length===11&&tl.every(vc)))s.team=null;
+ const tc=!s.team?[]:Array.isArray(s.team)?s.team:[...s.team.x,...(s.team.m?[s.team.m]:[]),...(s.team.b||[]),...(s.team.r||[])];
+ const old=(o.ver||0)<7,named=c=>c.k==='icon'&&ICONS.some(t=>t.n===c.n);
+ [...s.club,...tc].forEach(c=>{if(old&&!named(c)){if(!NM[c.f])c.f=pk(NAT);c.n=nmf(c.f)}fix(c)});s.ver=VER;return s}
+const PKEY='ud27_profile';
+function readProf(){try{const o=JSON.parse(localStorage.getItem(PKEY));if(o&&typeof o.p==='string'&&hz(o.p+SALT)===o.h)return JSON.parse(o.p)}catch(e){}return null}
+function withProf(d){const p=readProf();if(p){if(!d.user&&typeof p.u==='string')d.user=p.u.replace(/[^\p{L}\p{N}_\- ]/gu,'').trim().slice(0,16);if(!d.lang&&LANGS.some(x=>x[0]===p.l))d.lang=p.l}return d}
+function tamper(raw){try{localStorage.setItem(KEY+'_bak',raw)}catch(e){}const d=defS();d.tamper=1;return withProf(d)}
+function load(){let raw=null;try{raw=localStorage.getItem(KEY)}catch(e){}
+ if(!raw)return withProf(defS());
+ try{const o=JSON.parse(raw);
+  if(o&&typeof o.d==='string'){if(hz(o.d+SALT)===o.h)return withProf(sane(JSON.parse(o.d)));return tamper(raw)}
+  if(o&&typeof o==='object'&&Date.now()<LEG)return withProf(sane(o));
+  return tamper(raw)}catch(e){return tamper(raw)}}
+let S=load(),NOTE=S.tamper?'Sparfilen verkade ändrad utanför spelet och har nollställts.':'';delete S.tamper;
+const profOf=()=>({u:S.user||'',l:S.lang||''});
+const save=()=>{try{S.t=Date.now();const d=JSON.stringify(S);localStorage.setItem(KEY,JSON.stringify({v:VER,d,h:hz(d+SALT)}));const ps=JSON.stringify(profOf());localStorage.setItem(PKEY,JSON.stringify({p:ps,h:hz(ps+SALT)}))}catch(e){}cloudPush()};
+let cloudT=0,cloudOK=false;
+function cloudPush(){if(typeof DB==='undefined'||!DB||!U||!cloudOK||!S.user)return;clearTimeout(cloudT);cloudT=setTimeout(()=>{try{const d=JSON.stringify(S);DB.doc('data/users/'+U+'/save').set(d.length<230000?{v:VER,t:S.t||0,d,h:hz(d+SALT)}:{v:VER,t:S.t||0,pf:profOf()}).catch(()=>{})}catch(e){}},4000)}
+async function cloudInit(){try{const sn=await DB.doc('data/users/'+U+'/save').get();cloudOK=true;const c=sn&&sn.exists?sn.data():null;let done=false;
+ if(c&&typeof c.d==='string'&&hz(c.d+SALT)===c.h&&(c.t||0)>(S.t||0)+1000){S=sane(JSON.parse(c.d));done=true}
+ else if(c&&c.pf&&!S.user&&typeof c.pf.u==='string'){S.user=c.pf.u.replace(/[^\p{L}\p{N}_\- ]/gu,'').slice(0,16);if(LANGS.some(x=>x[0]===c.pf.l))S.lang=c.pf.l;done=true}
+ if(done){save();render()}else cloudPush()}catch(e){cloudOK=true}}
+let rp=0;const rr=()=>{if(rp)return;rp=1;requestAnimationFrame(()=>{rp=0;const a=document.activeElement;if(a&&a.matches&&a.matches('input,select'))return;render()})};
+let view='shop',OPK=null,D=null,Q=PACKS.map(()=>1);
+const $=id=>document.getElementById(id);
+const card=(c,x='')=>`<div class="card ${c.k||tier(c.r)} ${x}" title="${c.k?KN[c.k]:''}"><div class="r">${c.r}</div><div class="p">${c.pos}</div><div class="f">${esc(c.f)}</div><div class="n">${esc(c.n)}</div>${c.s?`<div class="st">${c.s.map((v,i)=>`<span><b>${v}</b>${(c.pos==='GK'?GKL:SN)[i]}</span>`).join('')}</div>`:''}${c.ps&&c.ps.length?`<div class="pss">${c.ps.map(k=>`<span title="${PS[k][1]}">${PS[k][0]}</span>`).join('')}</div>`:''}</div>`;
+function render(){try{CURL=S.lang||'sv';document.documentElement.lang=CURL;const ls=$('langsel');if(ls.value!==CURL)ls.value=CURL;
+ if(!S.lang){$('nav').innerHTML='';$('coins').textContent='';$('app').innerHTML=vLang();return}
+ if(!S.user){$('nav').innerHTML='';$('coins').textContent='';$('app').innerHTML=(NOTE?`<p class="l">${NOTE}</p>`:'')+vWelcome();i18n($('app'));return}
+ if(view!=='match'&&M.mode==='search')cancelS();
+ $('coins').textContent=S.user+' · 🪙 '+fmt(S.coins);
+ $('nav').innerHTML=[['shop','Butik'],['club','Klubb ('+S.club.length+')'],['draft','Draft'],['match','Spellägen'],['market','Marknad'],['obj','Mål'+(claimable()?' •':'')]].map(([k,t])=>`<button class="${view===k?'on':''}" data-c="nav" data-a='["${k}"]'>${t}</button>`).join('');
+ $('app').innerHTML=(NOTE?`<p class="l">${NOTE}</p>`:'')+(OPK?vOpen():PKON&&S.pend.length?vPick():view==='shop'?vShop():view==='club'?vClub():view==='market'?vMarket():view==='match'?vMatch():view==='obj'?vObj():vDraft());i18n($('nav'));i18n($('app'))}
+ catch(e){$('app').innerHTML='<p class="l">Något gick fel i den här vyn.</p><button class="btn" data-c="nav" data-a=\'["shop"]\'>Till butiken</button>';OPK=null}}
+function nav(k){view=k;OPK=null;PKON=false;MSG='';NOTE='';render()}
+function vWelcome(){return `<h2>Välkommen till Ultimatedream27!</h2><div class="board" style="text-align:left"><p>Välj ett användarnamn för att börja. När du skriver in det får du <b>🪙 200 000</b> och ett startlag med silver- och bronsspelare. Det får du bara en gång.</p><input id="uname" type="text" maxlength="16" placeholder="Användarnamn (3–16 tecken)" autocomplete="off" style="background:#0a1a16;color:var(--ink);border:1px solid var(--ln);border-radius:6px;padding:10px;font:600 18px Barlow,sans-serif;width:100%;max-width:320px;margin:8px 0">${WMSG?`<p class="l">${WMSG}</p>`:''}<div><button class="btn" data-c="startGame">Starta spelet</button></div></div>`}
+function starter(){const r=(a,b)=>rnd(a,b);FORMS['4-3-3'].forEach(s=>S.club.push(mkc(s[0],r(56,73))));for(let i=0;i<5;i++)S.club.push(mkc(pk(POS),r(55,70)));for(let i=0;i<3;i++)S.club.push(mkc(pk(POS),r(55,68)));S.club.push(mkc('MGR',r(58,70)));S.sq={form:'4-3-3',x:[],b:[],r:[],m:null}}
+function startGame(){const el=document.getElementById('uname'),n=(el&&el.value||'').trim().replace(/\s+/g,' ');
+ if(!/^[\p{L}\p{N}_\- ]{3,16}$/u.test(n)){WMSG='Använd 3–16 tecken: bokstäver, siffror, mellanslag, _ eller -.';render();return}
+ WMSG='';S.user=n;if(!S.bg){S.bg=1;S.coins+=200000;starter()}save();view='shop';render()}
+function closeP(){OPK=null;render()}
+function toClub(){view='club';OPK=null;render()}
+function setMF(k){MF=k;MSG='';render()}
+function lstCancel(){LST=null;render()}
+function dEnd(){D=null;render()}
+function lstSet(f,v){if(LST)LST[f]=+v}
+/* ---- butik ---- */
+const packHTML=(p,i)=>{const t=p.p*Q[i];return `<div class="pack"><div class="pk" style="background:${p.bg};color:${p.tc||'#1a1503'}">${p.n}</div><p>${p.pick?'Välj 1 av '+(p.nr?p.nr[0]+'–'+p.nr[1]:p.c)+' spelare':p.c+' kort'} · ${p.a}–${p.b}${p.x?' · '+p.x:''}${p.tp?' · rare: 2 % chans på 97–99':p.b>=97?' · 6 % chans på 97–99':''}</p><div class="qty"><button class="btn g" data-c="qty" data-a='[${i},-1]' aria-label="Färre">−</button><b>${Q[i]}</b><button class="btn g" data-c="qty" data-a='[${i},1]' aria-label="Fler">+</button></div><button class="btn" ${S.coins<t?'disabled':''} data-c="buy" data-a='[${i}]'>Köp ${Q[i]} · 🪙 ${fmt(t)}</button></div>`};
+function storedHTML(){const sp={};S.packs.forEach(n=>sp[n]=(sp[n]||0)+1);const e=Object.entries(sp);return e.length?`<h2>Dina pack (${S.packs.length})</h2><p class="mut">Pack du vunnit via mål och Champions.</p><div class="row">${e.map(([n,q])=>`<button class="btn" data-c="openStored" data-a='["${n}"]'>Öppna ${n} ×${q}</button>`).join('')}<button class="btn g" data-c="openAll">Öppna alla</button></div>`:''}
+function vShop(){
+ return `<h2>Packbutik</h2>${pendHTML()}${storedHTML()}${CATS.map(([c,d])=>`<h2>${c}</h2><p class="mut" style="margin-top:-4px">${d}</p><div class="packs">${PACKS.map((p,i)=>p.cat===c?packHTML(p,i):'').join('')}</div>`).join('')}<p class="mut">Alla spelare är påhittade. Snabbsälj kort i Klubben för att få mynt.</p>`}
+function qty(i,d){Q[i]=Math.max(1,Math.min(20,Q[i]+d));render()}
+function gen(p){const tot=p.k.reduce((a,x)=>a+x[1],0),cs=[],rb=()=>Math.round(p.a+Math.pow(Math.random(),p.sk||1.6)*(Math.min(p.b,96)-p.a));
+ for(let i=0;i<p.c;i++){let w=Math.random()*tot,k;for(const x of p.k){if((w-=x[1])<0){k=x[0];break}}
+  const q=p.b>=97?Math.random():1,r=p.o97?(q<.6?97:q<.88?98:99):p.tp?(q<.004?99:q<.01?98:q<.02?97:rb()):q<.01?99:q<.03?98:q<.06?97:rb(),f=p.nats?p.nats[i%p.nats.length]:p.nat;
+  let c=mkc(p.seq?p.pos[i%p.pos.length]:pk(p.pos||POSM),r,k==='n'?undefined:k,f);
+  if(p.nat&&Math.random()<.012)c=icn(ICONS.find(t=>t.f===p.nat));
+  if(p.fps&&!c.ps.length&&c.r>=93&&c.pos!=='MGR')c.ps=mkPS(c,true);
+  cs.push(c)}
+ for(let i=cs.length-1;i>0;i--){const j=rnd(0,i);[cs[i],cs[j]]=[cs[j],cs[i]]}return cs}
+function genPick(p){const q={...p,c:p.nr?rnd(p.nr[0],p.nr[1]):p.c};if(p.nat==='*')q.nat=pk(NAT);return gen(q)}
+function buy(i){const p=PACKS[i],n=Q[i],t=p.p*n;if(S.coins<t)return;S.coins-=t;
+ if(p.pick){for(let j=0;j<n;j++)S.pend.push({n:p.n,opts:genPick(p)});PKON=true;save();render();return}
+ openList(Array(n).fill(p))}
+let PKON=false,WMSG='';
+function vPick(){const t=S.pend[0],left=S.pend.length-1;
+ return `<div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0">${t.n}${left?' · '+left+' till':''}</h2><button class="btn g" data-c="pickLater">Välj senare</button></div><p class="mut">Välj 1 av ${t.opts.length} spelare. Resten försvinner. Valet sparas om du lämnar sidan.</p><div class="cards">${t.opts.map((c,i)=>`<div>${card(c)}<div class="mut" style="text-align:center;font-size:13px">🪙 ${fmt(val(c))}</div><div class="sb"><button class="btn" data-c="choose" data-a='[${i}]'>Välj</button></div></div>`).join('')}</div>`}
+function choose(i){const t=S.pend[0];if(!t||!t.opts[i])return;S.club.push(t.opts[i]);S.pend.shift();if(!S.pend.length)PKON=false;save();render()}
+function pickLater(){PKON=false;render()}
+function resumePicks(){if(S.pend.length){PKON=true;render()}}
+const pendHTML=()=>S.pend.length?`<h2>Väntande spelarval (${S.pend.length})</h2><button class="btn" data-c="resumePicks">Välj spelare</button>`:'';
+function openList(ps){const L=ps.map(p=>{const cs=gen(p);S.club.push(...cs);return{cs,seen:cs.map(()=>false),name:p.n}});save();track({open:ps.length});OPK=L.shift();OPK.q=L;render()}
+function openStored(n){const i=S.packs.indexOf(n),p=PACKS.find(x=>x.n===n);if(i<0||!p)return;S.packs.splice(i,1);openList([p])}
+function openAll(){const ps=S.packs.map(n=>PACKS.find(x=>x.n===n)).filter(Boolean);if(!ps.length)return;S.packs=[];openList(ps)}
+function vOpen(){const o=OPK,all=o.seen.every(x=>x),left=o.q.length;
+ return `<div class="row" style="justify-content:space-between;align-items:center"><h2 style="margin:0">${o.name}${left?` · ${left} till`:''}</h2><button class="btn g" data-c="closeP">✕ Stäng</button></div><p class="mut">${all?'Alla kort visade.':'Tryck på korten för att vända dem.'} Korten är redan sparade i din klubb.</p><div class="cards">${o.cs.map((c,i)=>o.seen[i]?`<div>${card(c,'flip')}<div class="mut" style="text-align:center;font-size:13px">🪙 ${fmt(val(c))}</div></div>`:`<div class="card back" data-c="flipC" data-a='[${i}]'>M</div>`).join('')}</div><p style="text-align:center;margin-top:24px"><button class="btn g" data-c="o2">Vänd alla</button> <button class="btn g" data-c="toClub">Till klubben</button> ${left?`<button class="btn" data-c="nextP">Nästa pack</button>`:`<button class="btn" data-c="closeP">${all?'Klar':'Hoppa över'}</button>`}</p>`}
+function flipC(i){OPK.seen[i]=true;render()}function o2(){OPK.seen=OPK.seen.map(()=>true);render()}
+function nextP(){const q=OPK.q;OPK=q.shift();OPK.q=q;render()}
+/* ---- klubb ---- */
+function vCards(){const c=[...S.club].sort((a,b)=>b.r-a.r);
+ if(!c.length)return `<p>Du har inga spelare än. Öppna ett pack i butiken.</p>`;
+ return `${lstForm()}<p class="mut">Värde är vad kortet är värt, snabbsälj ger ${Math.round(QS*100)} % av det. Playstyles (rating 93+): ${Object.values(PS).map(x=>x[0]+' '+x[1]).join(' · ')}. Managers (MGR) ger laget bonus i match.</p><div class="cards">${c.map(x=>`<div class="cl" style="position:relative">${card(x)}<div class="mut" style="text-align:center;font-size:13px">Värde 🪙${fmt(val(x))}</div><div class="sb"><button class="btn g" data-c="lstOpen" data-a='["${x.id}"]'>Lägg ut</button><button class="btn g" data-c="sell" data-a='["${x.id}"]'>Snabbsälj 🪙${fmt(sellP(x))}</button></div></div>`).join('')}</div>`}
+let CV='cards',PKR=null,DF='4-3-3';
+function vClub(){return `<h2>Klubb</h2><div class="row"><button class="btn g ${CV==='cards'?'on':''}" data-c="cv" data-a='["cards"]'>Samling</button><button class="btn g ${CV==='squad'?'on':''}" data-c="cv" data-a='["squad"]'>Trupp</button></div>`+(CV==='squad'?vSquad():vCards())}
+function vSquad(){const T=buildTeam(),f=S.sq.form;
+ const fb=Object.keys(FORMS).map(k=>`<button class="btn g ${k===f?'on':''}" data-c="setForm" data-a='["${k}"]'>${k}</button>`).join('');
+ if(!T)return `<div class="row">${fb}</div><p>Du behöver minst 11 spelare i klubben för att bygga en trupp.</p>`;
+ const sl=FORMS[f],pitch=`<div class="pitch">${sl.map((s,i)=>`<div class="slot ${PKR&&PKR.z==='x'&&PKR.i===i?'cur':''}" style="left:${s[1]}%;top:${s[2]}%" data-c="pick" data-a='["x",${i}]'>${card(T.x[i])}</div>`).join('')}</div>`;
+ const row=(z,arr,n,lab)=>`<h3>${lab}</h3><div class="cards sm">${Array.from({length:n},(_,i)=>`<div data-c="pick" data-a='["${z}",${i}]'>${arr[i]?card(arr[i]):'<div class="slot" style="position:static;transform:none">+</div>'}</div>`).join('')}</div>`;
+ return `<div class="row">${fb}<button class="btn" data-c="autoSq">Bästa laget</button></div><div class="d" style="font-size:22px">Lagrating ${ovr(T)} · ${f}</div><p class="mut">Tryck på en plats för att byta spelare. Fel position ger −6 rating. Tomma platser fylls automatiskt med dina bästa kort.</p>${pickerHTML()}${pitch}${row('m',T.m?[T.m]:[],1,'Tränare')}${row('b',T.b,5,'Bänk')}${row('r',T.r,3,'Reserver')}`}
+function pickerHTML(){if(!PKR)return '';const z=PKR.z,want=z==='x'?FORMS[S.sq.form][PKR.i][0]:null,sc=c=>want?(okPos(c.pos,want)?1:0)+(c.pos===want?1:0):0;
+ const L=S.club.filter(c=>z==='m'?c.pos==='MGR':c.pos!=='MGR').sort((a,b)=>sc(b)-sc(a)||b.r-a.r).slice(0,60);
+ return `<div class="board" style="text-align:left;margin:10px 0"><div class="row" style="justify-content:space-between"><h3>Välj ${z==='x'?want:z==='m'?'tränare':z==='b'?'bänkspelare':'reservspelare'}</h3><span><button class="btn g" data-c="unpick">Töm plats (auto)</button> <button class="btn g" data-c="closePick">Stäng</button></span></div><div class="cards sm picker">${L.map(c=>`<div data-c="put" data-a='["${c.id}"]'>${card(c)}</div>`).join('')||'<p>Inga kort att välja.</p>'}</div></div>`}
+function cv(v){CV=v;PKR=null;render()}
+function pick(z,i){PKR={z,i};render()}
+function closePick(){PKR=null;render()}
+function clearId(id){const q=S.sq;['x','b','r'].forEach(k=>{q[k]=(q[k]||[]).map(v=>v===id?null:v)});if(q.m===id)q.m=null}
+function put(id){if(!PKR)return;const{z,i}=PKR;clearId(id);if(z==='m')S.sq.m=id;else{S.sq[z]=S.sq[z]||[];S.sq[z][i]=id}PKR=null;save();render()}
+function unpick(){if(!PKR)return;const{z,i}=PKR;if(z==='m')S.sq.m=null;else if(S.sq[z])S.sq[z][i]=null;PKR=null;save();render()}
+function setForm(f){if(!FORMS[f])return;S.sq.form=f;S.sq.x=[];PKR=null;save();render()}
+function autoSq(){S.sq={form:S.sq.form,x:[],b:[],r:[],m:null};const T=buildTeam();if(T){S.sq.x=T.x.map(c=>c.id);S.sq.b=T.b.map(c=>c.id);S.sq.r=T.r.map(c=>c.id);S.sq.m=T.m?T.m.id:null}PKR=null;save();render()}
+function dform(k){if(FORMS[k]){DF=k;render()}}
+function sell(id){const c=S.club.find(x=>x.id===id);if(!c)return;S.coins+=sellP(c);S.club=S.club.filter(x=>x.id!==id);save();render()}
+/* ---- lag ---- */
+const slim=c=>({id:c.id,r:c.r,pos:c.pos,n:c.n,f:c.f,k:c.k,s:c.s,ps:c.ps,oop:!!c.oop});
+const ovr=T=>{const base=T.x.reduce((a,c)=>a+c.r-(c.oop?6:0),0)/T.x.length,
+ mb=T.m?Math.max(0,Math.min(4,Math.round((T.m.r-60)/8))):0,
+ bb=T.b&&T.b.length?Math.max(0,Math.min(3,Math.round((T.b.reduce((a,c)=>a+c.r,0)/T.b.length-60)/10))):0;return Math.round(base+mb+bb+Math.min(3,T.x.reduce((a,c)=>a+(c.ps?c.ps.length:0),0)*.5))};
+const ext=T=>`<div class="ext"><h3>Manager</h3><div class="cards sm">${T.m?card(T.m):'<span class="mut">Ingen manager</span>'}</div><h3>Bänk</h3><div class="cards sm">${T.b.map(c=>card(c)).join('')||'<span class="mut">Tom</span>'}</div><h3>Reserv</h3><div class="cards sm">${T.r.map(c=>card(c)).join('')||'<span class="mut">Tom</span>'}</div></div>`;
+function buildTeam(){const sq=S.sq,sl=FORMS[sq.form]||FORMS['4-3-3'],byId=id=>S.club.find(c=>c.id===id),used=new Set(),x=[];
+ const pool=S.club.filter(c=>c.pos!=='MGR').sort((a,b)=>b.r-a.r);
+ sl.forEach((s,i)=>{const c=byId(sq.x[i]);if(c&&c.pos!=='MGR'&&!used.has(c.id)){used.add(c.id);x[i]=c}});
+ sl.forEach((s,i)=>{if(x[i])return;const c=pool.find(y=>!used.has(y.id)&&y.pos===s[0])||pool.find(y=>!used.has(y.id)&&okPos(y.pos,s[0]))||pool.find(y=>!used.has(y.id)&&(s[0]==='GK'||y.pos!=='GK'))||pool.find(y=>!used.has(y.id));if(c){used.add(c.id);x[i]=c}});
+ if(sl.some((s,i)=>!x[i]))return null;
+ const take=(arr,n)=>{const o=[];(arr||[]).forEach(id=>{const c=byId(id);if(c&&c.pos!=='MGR'&&!used.has(c.id)&&o.length<n){used.add(c.id);o.push(c)}});while(o.length<n){const c=pool.find(y=>!used.has(y.id));if(!c)break;used.add(c.id);o.push(c)}return o};
+ const b=take(sq.b,5),r=take(sq.r,3),m0=byId(sq.m),mc=m0&&m0.pos==='MGR'?m0:S.club.filter(c=>c.pos==='MGR').sort((a,b)=>b.r-a.r)[0];
+ return{x:x.map((c,i)=>({...slim(c),oop:!okPos(c.pos,sl[i][0])})),m:mc?slim(mc):null,b:b.map(slim),r:r.map(slim),form:sq.form}}
+function xi(){if(M.src==='draft'&&S.team){const t=S.team;return Array.isArray(t)?{x:t.map(slim),m:null,b:[],r:[],form:'4-3-3'}:{x:t.x.map(slim),m:t.m?slim(t.m):null,b:t.b.map(slim),r:t.r.map(slim),form:t.form||'4-3-3'}}
+ return buildTeam()}
+/* ---- draft ---- */
+const NR=20;
+function vDraft(){
+ if(!D)return `<h2>Draft</h2><p>Välj formation. Bygg sedan laget i 20 omgångar: 11 startspelare, 1 tränare, 5 på bänken och 3 reserver. Välj 1 av 5 kort varje gång och spela sedan 4 matcher.</p><div class="row">${Object.keys(FORMS).map(k=>`<button class="btn g ${k===DF?'on':''}" data-c="dform" data-a='["${k}"]'>${k}</button>`).join('')}</div><button class="btn" ${S.coins<5000?'disabled':''} data-c="startD">Starta draft 🪙 5 000</button>`;
+ const T={x:D.t.filter(Boolean),m:D.m,b:D.b,r:D.rs};
+ const pitch=`<div class="pitch">${D.sl.map((s,i)=>`<div class="slot ${D.r===i?'cur':''}" style="left:${s[1]}%;top:${s[2]}%">${D.t[i]?card(D.t[i]):s[0]}</div>`).join('')}</div>${ext(T)}`;
+ if(D.r<NR){const r=D.r,ti=r<11?'välj '+D.sl[r][0]:r===11?'välj manager':r<17?`välj bänkspelare (${r-11}/5)`:`välj reserv (${r-16}/3)`;
+  return `<h2>Draft · ${ti} (${r+1}/${NR})</h2><div class="cards">${D.o.map((c,i)=>`<div data-c="pickD" data-a='[${i}]'>${card(c)}</div>`).join('')}</div>${pitch}`}
+ const avg=ovr(T);
+ return `<h2>Ditt lag · ${avg} rating</h2>${pitch}${D.m2?`${D.m2.map(m=>`<div class="res ${m.w?'w':'l'}">${m.w?'Vinst':'Förlust'} ${m.g[0]}–${m.g[1]} mot lag med rating ${m.o}</div>`).join('')}<div class="res">Belöning: 🪙 ${fmt(D.rew)}</div><button class="btn" data-c="dEnd">Klar</button>`:`<button class="btn" data-c="playD" data-a='[${avg}]'>Spela 4 matcher</button>`}`}
+function opts(){const r=D.r,hi=rnd(72,92);D.o=[0,1,2,3,4].map(()=>fix({id:'d'+(++uid),pos:r<11?D.sl[r][0]:r===11?'MGR':pk(POS),r:rnd(62,hi),...pl()}))}
+function startD(){S.coins-=5000;save();D={form:DF,sl:FORMS[DF],r:0,t:[],m:null,b:[],rs:[]};opts();render()}
+function pickD(i){const c=D.o[i],r=D.r;if(r<11)D.t[r]=c;else if(r===11)D.m=c;else if(r<17)D.b.push(c);else D.rs.push(c);D.r++;if(D.r<NR)opts();render()}
+function playD(avg){let w=0;D.m2=[];for(let k=0;k<4;k++){const o=rnd(68,86),win=Math.random()<Math.min(.92,Math.max(.08,.5+(avg-o)/25)),a=rnd(1,4),b=rnd(0,a-1);if(win)w++;D.m2.push({w:win,o,g:win?[a,b]:[b,a]})}
+ D.rew=w*2000+(w===4?7500:0);track({draft:w});S.coins+=D.rew;S.team={x:D.t,m:D.m,b:D.b,r:D.rs,form:D.form};save();render()}
+/* ---- match ---- */
+let M={mode:'menu',src:'club'},U=null,DB=null,unsubs=[],hb=null;
+(async()=>{try{const u=await claude.use('user');DB=await claude.use('db');U=u?await u.id():null;if(DB&&U){subMarket();cloudInit()}if(view==='match'&&M.mode==='menu')render()}catch(e){}})();
+let SK=3,CV0=.23,CVD=90;
+function mkRef(){const f=pk(NAT);return{n:nmf(f),f,s:+(.6+Math.random()*.8).toFixed(2)}}
+function simMatch(A,B){const ref=mkRef(),oa=ovr(A),ob=ovr(B),raw=[],add=(k,c)=>{for(let i=0;i<c;i++)raw.push({m:rnd(1,90),k})};
+ add('ch',rnd(10,15));add('in',rnd(8,14));add('co',rnd(4,10));add('fo',Math.round(rnd(7,13)*ref.s));
+ [['a',A],['b',B]].forEach(([s,T])=>{if(T.b&&T.b.length)raw.push({m:rnd(55,80),k:'su',s})});
+ raw.sort((x,y)=>x.m-y.m);
+ let ga=0,gb=0;const ev=[],red={a:0,b:0},yel={a:{},b:{}},out={a:new Set(),b:new Set()},T2={a:A,b:B},idx=s=>s==='a'?0:1;
+ const eff=s=>(s==='a'?oa:ob)-6*red[s],side=()=>{const x=eff('a'),y=eff('b'),q=Math.pow(x,SK);return Math.random()<q/(q+Math.pow(y,SK))?'a':'b'};
+ const who=(s,f)=>{const all=T2[s].x.filter(c=>!out[s].has(c.n)),L=f?all.filter(f):all;return pk(L.length?L:all.length?all:T2[s].x)};
+ for(const e of raw){const m=e.m;
+  if(e.k==='ch'){const s=side(),o=s==='a'?'b':'a',od=eff(s)-eff(o),pl=who(s,c=>['ST','LW','RW','CAM','CM'].includes(c.pos));
+   if(Math.random()<Math.min(.7,Math.max(.12,CV0+od/CVD+((pl.s?pl.s[1]:75)-75)/300))){s==='a'?ga++:gb++;ev.push({m,s,t:'g',n:pl.n,sc:ga+'–'+gb})}else ev.push({m,s,t:'c',n:pl.n})}
+  else if(e.k==='co'){const s=side();ev.push({m,s,t:'k',n:who(s).n});
+   if(Math.random()<.05){const sc=who(s,c=>['ST','CB','CM'].includes(c.pos));s==='a'?ga++:gb++;ev.push({m,s,t:'g',n:sc.n,sc:ga+'–'+gb,via:'k'})}}
+  else if(e.k==='in'){const s=side();ev.push({m,s,t:'i',n:who(s).n})}
+  else if(e.k==='fo'){const s=Math.random()<.5?'a':'b';let pl=who(s,c=>c.pos!=='GK');if(yel[s][pl.n]&&Math.random()<.8)pl=who(s,c=>c.pos!=='GK');const yc=yel[s][pl.n]||0;
+   if(Math.random()<.01*ref.s){red[s]++;out[s].add(pl.n);ev.push({m,s,t:'r',n:pl.n})}
+   else if(Math.random()<.42*ref.s){yel[s][pl.n]=yc+1;ev.push({m,s,t:'y',n:pl.n});if(yc>=1){red[s]++;out[s].add(pl.n);ev.push({m,s,t:'r',n:pl.n,two:1})}}
+   else ev.push({m,s,t:'f',n:pl.n})}
+  else if(e.k==='su'){const s=e.s;ev.push({m,s,t:'s',n:pk(T2[s].b).n,o:who(s,c=>c.pos!=='GK').n})}}
+ const pa=Math.max(35,Math.min(65,Math.round(50+(oa-ob)*1.6+rnd(-4,4))));
+ return{ev,ga,gb,ref,st:{po:[pa,100-pa]}}}
+function botTeam(l){const c=(pos,d)=>fix({r:Math.max(40,l+d+rnd(-3,3)),pos,...pl(),oop:false}),fk=pk(Object.keys(FORMS));
+ return{form:fk,x:FORMS[fk].map(s=>c(s[0],0)),m:c('MGR',-2),b:[1,2,3,4,5].map(()=>c(pk(POS),-6)),r:[1,2,3].map(()=>c(pk(POS),-10))}}
+const dI=p=>Math.min(10,Math.floor(p/100));
+let BL=70;const botLvl=i=>Math.round(BL+i*2.2+rnd(-3,3));
+function vsBot(){const t=xi();if(!t)return;const i=dI(S.pts.bt),b=botTeam(botLvl(i)),r=simMatch(t,b);
+ startPlay({gm:'sb',dvi:i,online:false,me:'a',mn:S.user||'Du',on:'Bot · '+DIV[i],mo:ovr(t),oo:ovr(b),tl:t,tr:b,...r})}
+const PW=600,PH=380;
+function fpos(T,left){const F2=FORMS[T.form]||FORMS['4-3-3'];return T.x.map((c,i)=>{const f=F2[i]||['',50,50],d=Math.max(0,Math.min(1,(91-f[2])/78)),xl=.05+d*.42,yl=.06+f[1]/100*.88;return left?[xl*PW,yl*PH]:[(1-xl)*PW,(1-yl)*PH]})}
+function startPlay(o){clearInterval(M.iv);clearTimeout(M.fo);const sp=o.online||o.gm==='ch'?1:2;
+ M={mode:'play',src:M.src,gm:M.gm,min:0,paused:false,sp,hold:0,bx:.5,by:.5,fx:'',fxk:0,red:new Set(),...o};
+ M.pl=(M.st&&M.st.po?M.st.po[M.me==='a'?0:1]:50)/100;M.lab={l:M.tl.x.map(c=>c.n),r:M.tr.x.map(c=>c.n)};
+ M.iv=setInterval(tick,Math.round(450/M.sp));render()}
+function step(m){const L=s=>s===M.me;let fx='';
+ M.bx=Math.max(.06,Math.min(.94,M.bx+((Math.random()<M.pl?.64:.36)-M.bx)*.55+(Math.random()-.5)*.2));M.by=Math.max(.1,Math.min(.9,M.by+(Math.random()-.5)*.5));
+ for(const e of M.ev.filter(x=>x.m===m)){
+  if(e.t==='g'){M.bx=L(e.s)?.97:.03;M.by=.5;fx='MÅL!';M.hold=2}
+  else if(e.t==='c'){M.bx=L(e.s)?.88:.12;M.by=.3+Math.random()*.4}
+  else if(e.t==='k'){M.bx=L(e.s)?.985:.015;M.by=Math.random()<.5?.04:.96;fx=fx||'Hörna'}
+  else if(e.t==='i'){M.by=Math.random()<.5?.02:.98;M.bx=.2+Math.random()*.6;fx=fx||'Inkast'}
+  else if(e.t==='f'){fx=fx||'Frispark'}
+  else if(e.t==='y'){fx=fx||'Gult kort'}
+  else if(e.t==='r'){M.red.add(e.n);fx='Rött kort'}
+  else if(e.t==='s'){const k=L(e.s)?'l':'r',i=M.lab[k].indexOf(e.o);if(i>=0)M.lab[k][i]=e.n}}
+ M.fx=fx;if(m===45){M.hold=4;M.fx='Halvtid'}}
+function tick(){if(M.mode!=='play'||M.paused)return;
+ if(M.hold>0){M.hold--;if(M.hold===0&&M.fx==='Halvtid')M.fx='';updPlay();return}
+ M.min++;step(M.min);if(M.min>=90){endPlay();render();return}
+ if(view==='match')updPlay()}
+function skip(){if(M.mode!=='play')return;for(let m=M.min+1;m<=90;m++)step(m);M.min=90;M.hold=0;M.fx='';endPlay();render()}
+function togglePause(){M.paused=!M.paused;render()}
+function setSpd(v){M.sp=v;clearInterval(M.iv);M.iv=setInterval(tick,Math.round(450/v));render()}
+function foundGo(){if(M.mode==='found'){clearTimeout(M.fo);startPlay(M.args)}}
+function vFound(){const a=M.args;return `<h2>Motståndare hittad!</h2><div class="board"><div class="sc"><small>${esc(a.mn)}<br>${a.mo}</small><span>VS</span><small>${esc(a.on)}<br>${a.oo}</small></div><p class="mut">Matchen startar om <b class="cd" data-e="${M.t0+4000}">4</b> s</p><button class="btn" data-c="foundGo">Starta nu</button></div>`}
+function shoot(a,b){let x=0,y=0;const pa=.74+(a-b)/150,pb=.74-(a-b)/150;for(let i=0;i<5;i++){if(Math.random()<pa)x++;if(Math.random()<pb)y++}let n=0;while(x===y&&n++<20){if(Math.random()<pa)x++;if(Math.random()<pb)y++}if(x===y)x++;return{x,y,w:x>y}}
+function endPlay(){clearInterval(M.iv);if(M.mode!=='play')return;M.mode='done';
+ const a=M.me==='a',mg=a?M.ga:M.gb,og=a?M.gb:M.ga;let d=mg-og;
+ if(M.gm==='ch'&&d===0){const pd=M.penDoc,pn=pd?(M.me==='a'?{x:pd.x,y:pd.y}:{x:pd.y,y:pd.x}):shoot(M.mo,M.oo);pn.w=pn.x>pn.y;M.pen=pn;d=pn.w?1:-1}
+ M.res=d>0?'Vinst':d===0?'Oavgjort':'Förlust';
+ if(M.gm==='ch')champRes(d>0);
+ else{const u=M.online?2:1,k=M.online?'on':'bt',b0=S.pts[k],sc=1+.1*dI(b0);
+  M.rew=Math.round((d>0?u*(1500+500*d):d===0?u*600:d===-1?u*200:d===-2?0:-u*500*(-d-2))*sc/10)*10;
+  M.dp=d>0?25+5*Math.min(d,4):d===0?5:d<=-3?-25:-15;
+  S.pts[k]=Math.max(0,b0+M.dp);M.d0=dI(b0);M.d1=dI(S.pts[k]);S.coins=Math.max(0,S.coins+M.rew)}
+ track({gm:M.gm,gf:mg,ga:og,win:d>0,dv:M.dvi});save()}
+function cleanS(){unsubs.forEach(f=>{try{f()}catch(e){}});unsubs=[];clearInterval(hb);clearTimeout(M.fb);if(DB&&U)DB.doc('queue/'+U).delete().catch(()=>{})}
+function cancelS(){cleanS();M={mode:'menu',src:M.src,gm:M.gm}}
+function findM(){if(!DB||!U)return;const t=xi();if(!t)return;M={mode:'search',src:M.src,gm:M.gm==='ch'?'ch':'on',started:Date.now(),seen:{}};let n=0;
+ const me={uid:U,name:(S.user||'Manager-'+U.slice(0,4)),team:t,gm:M.gm};
+ const put=()=>DB.doc('queue/'+U).set({...me,n:++n}).catch(()=>{});put();hb=setInterval(put,8000);
+ unsubs.push(DB.collection('queue').onSnapshot(snap=>{if(M.mode!=='search')return;const now=Date.now();let o=null;const nms=[];
+  snap.docs.forEach(d=>{const x=d.data();if(!x||x.uid===U||(x.gm||'on')!==M.gm)return;const s=M.seen[x.uid];if(!s||s.n!==x.n)M.seen[x.uid]={n:x.n,at:now};
+   if(now-M.seen[x.uid].at<25000){nms.push(x.name);if(U<x.uid&&!o)o=x}});if(nms.join()!==(M.lobby||[]).join()){M.lobby=nms;rr()}
+  if(o&&!M.creating){M.creating=true;const r=simMatch(t,o.team),id=U.slice(0,8)+'_'+o.uid.slice(0,8)+'_'+now;
+   DB.doc('matches/'+id).set({id,gm:M.gm,a:U,b:o.uid,an:me.name,bn:o.name,at:t,bt:o.team,...r,pen:M.gm==='ch'&&r.ga===r.gb?shoot(ovr(t),ovr(o.team)):null}).then(()=>setTimeout(()=>DB.doc('matches/'+id).delete().catch(()=>{}),90000)).catch(()=>{M.creating=false})}},()=>{}));
+ unsubs.push(DB.collection('matches').onSnapshot(snap=>{if(M.mode!=='search')return;S.done=S.done||{};
+  const d=snap.docs.map(x=>x.data()).find(x=>x&&(x.a===U||x.b===U)&&!S.done[x.id]&&(x.gm||'on')===M.gm);
+  if(d){S.done[d.id]=1;save();cleanS();const a=d.a===U,args={online:true,gm:M.gm,penDoc:d.pen||null,me:a?'a':'b',mn:S.user||'Du',on:a?d.bn:d.an,mo:ovr(a?d.at:d.bt),oo:ovr(a?d.bt:d.at),tl:a?d.at:d.bt,tr:a?d.bt:d.at,ev:d.ev,ga:d.ga,gb:d.gb,ref:d.ref,st:d.st};
+   M={mode:'found',src:M.src,gm:M.gm,args,t0:Date.now()};render();M.fo=setTimeout(()=>{if(M.mode==='found')startPlay(args)},4000)}},()=>{}));render()}
+const dvBox=(t,p)=>{const i=dI(p);return `<div class="dv">${t}: ${DIV[i]} <span class="mut" style="font-size:16px">${i<10?p%100+'/100 poäng':(p-1000)+' poäng'}</span><div class="bar"><i style="width:${i<10?p%100:100}%"></i></div></div>`};
+function toMenu(){M={mode:'menu',src:M.src,gm:M.gm};render()}
+function gm(k){M.gm=k;render()}
+function setSrc(k){M.src=k;render()}
+function cancelSearch(){cancelS();render()}
+const sn=n=>String(n).split(' ').pop().slice(0,9);
+function vPitch(){const b=[M.bx*PW,M.by*PH];let o=`<svg id="pf" viewBox="0 0 ${PW} ${PH}" role="img" aria-label="Match" style="width:100%;height:auto;border-radius:8px;display:block"><rect width="${PW}" height="${PH}" fill="#1d6b45"/>`;
+ for(let i=0;i<10;i+=2)o+=`<rect x="${i*60}" y="0" width="60" height="${PH}" fill="#1a6340"/>`;
+ o+=`<g fill="none" stroke="#ffffff99" stroke-width="2"><rect x="8" y="8" width="584" height="364"/><line x1="300" y1="8" x2="300" y2="372"/><circle cx="300" cy="190" r="44"/><rect x="8" y="110" width="80" height="160"/><rect x="512" y="110" width="80" height="160"/><rect x="8" y="160" width="30" height="60"/><rect x="562" y="160" width="30" height="60"/><rect x="0" y="170" width="8" height="40"/><rect x="592" y="170" width="8" height="40"/></g>`;
+ [[M.tl,'l',true,'#e8c24a'],[M.tr,'r',false,'#ff6a5a']].forEach(([T,k,left,col])=>{const pos=fpos(T,left);T.x.forEach((c,i)=>{const[x,y]=pos[i],nm=M.lab[k][i];o+=`<g id="pl_${k}${i}" class="pl${M.red.has(nm)?' off':''}" style="transform:translate(${x+(b[0]-x)*.12}px,${y+(b[1]-y)*.14}px)"><circle r="9" fill="${col}"/><text y="3">${i+1}</text><text class="pn" y="20">${esc(sn(nm))}</text></g>`})});
+ return o+`<g id="ball" style="transform:translate(${b[0]}px,${b[1]}px)"><circle r="5" fill="#fff" stroke="#222"/></g><text id="fx" class="fx${M.fx?' on':''}" x="300" y="200">${M.fx||''}</text></svg>`}
+const evL=e=>{const mine=e.s===M.me,who=esc(mine?M.mn:M.on),tx={g:'⚽ Mål!',c:'Chans:',k:'🚩 Hörna:',i:'Inkast:',f:'Foul:',y:'🟨 Gult kort:',r:'🟥 Rött kort:',s:'🔄 Byte:'}[e.t]||'';
+ return `<div><span class="mn">${e.m}'</span> <span>${tx}</span> ${e.t==='s'?`↑ <b>${esc(e.n)}</b> ↓ <b>${esc(e.o)}</b>`:`<b>${esc(e.n)}</b>`}${e.t==='g'?` <span class="mut">${e.sc}</span>`:''}${e.via==='k'?' <span class="mut">(hörna)</span>':''}${e.two?' <span class="mut">(andra gula)</span>':''} <span class="mut">(${who})</span></div>`};
+const logHTML=()=>[...M.ev.filter(e=>e.m<=M.min)].reverse().map(evL).join('')||'<div>Avspark!</div>';
+function statsRows(){const e=M.ev.filter(x=>x.m<=M.min),me=M.me,op=me==='a'?'b':'a',ct=(t,s,f)=>e.filter(x=>x.t===t&&x.s===s&&(!f||f(x))).length,sh=s=>ct('g',s)+ct('c',s),fo=s=>ct('f',s)+ct('y',s)+ct('r',s,x=>!x.two),po=M.st&&M.st.po?M.st.po[me==='a'?0:1]:50,pm=Math.round(50+(po-50)*Math.min(1,M.min/30));
+ return [['Bollinnehav',pm+' %',100-pm+' %'],['Skott',sh(me),sh(op)],['Hörnor',ct('k',me),ct('k',op)],['Fouls',fo(me),fo(op)],['Gula kort',ct('y',me),ct('y',op)],['Röda kort',ct('r',me),ct('r',op)]].map(([l,a,b])=>`<tr><td>${a}</td><th>${l}</th><td>${b}</td></tr>`).join('')}
+function updPlay(){const e=id=>document.getElementById(id);if(!e('pf'))return;const b=[M.bx*PW,M.by*PH];
+ e('ball').style.transform=`translate(${b[0]}px,${b[1]}px)`;
+ [[M.tl,'l',true],[M.tr,'r',false]].forEach(([T,k,left])=>{const pos=fpos(T,left);T.x.forEach((c,i)=>{const g=e('pl_'+k+i);if(!g)return;const[x,y]=pos[i],nm=M.lab[k][i];g.style.transform=`translate(${x+(b[0]-x)*.12}px,${y+(b[1]-y)*.14}px)`;g.classList.toggle('off',M.red.has(nm));const t=g.querySelector('.pn');if(t&&t.textContent!==sn(nm))t.textContent=sn(nm)})});
+ const f=e('fx');f.textContent=M.fx||'';f.classList.toggle('on',!!M.fx);
+ const g=M.ev.filter(x=>x.t==='g'&&x.m<=M.min),my=g.filter(x=>x.s===M.me).length;
+ e('clk').textContent=M.hold>0&&M.fx==='Halvtid'?'HT':M.min+"'";e('scr').textContent=my+'–'+(g.length-my);e('lg').innerHTML=logHTML();e('stt').innerHTML=statsRows();
+ i18n(f);i18n(e('lg'));i18n(e('stt'));i18n(e('clk'))}
+function vPlay(){const dn=M.mode==='done',a=M.me==='a',mg=a?M.ga:M.gb,og=a?M.gb:M.ga,g=M.ev.filter(e=>e.m<=M.min&&e.t==='g'),my=g.filter(e=>e.s===M.me).length,op=g.length-my;
+ const ttl={sb:'Squad Battles',on:'Online-match',ch:'Champions'}[M.gm]||'Match',cls=M.res==='Vinst'?'w':M.res==='Förlust'?'l':'';
+ const ref=M.ref?`<p class="mut">Domare: ${esc(M.ref.n)} ${esc(M.ref.f)} · ${M.ref.s<.85?'Mild':M.ref.s>1.15?'Sträng':'Normal'}</p>`:'';
+ const ctl=dn?'':`<div class="row"><button class="btn g" data-c="togglePause">${M.paused?'▶ Fortsätt':'⏸ Pausa'}</button>${[1,2,4,8].map(v=>`<button class="btn g ${M.sp===v?'on':''}" data-c="setSpd" data-a='[${v}]'>×${v}</button>`).join('')}<button class="btn g" data-c="skip">Hoppa till slutet</button></div>`;
+ const end=!dn?'':M.gm==='ch'?`<div class="res ${cls}">${M.res} ${mg}–${og}${M.pen?' (straffar '+M.pen.x+'–'+M.pen.y+')':''}</div><div class="res">${chLine()}</div><button class="btn" data-c="toMenu">Fortsätt</button>`:`<div class="res ${cls}">${M.res} ${mg}–${og} · 🪙 ${M.rew>=0?'+':'−'}${fmt(Math.abs(M.rew))} · ${M.dp>=0?'+':''}${M.dp} poäng</div><div class="res">${M.d1>M.d0?'Befordrad: '+DIV[M.d0]+' → '+DIV[M.d1]:M.d1<M.d0?'Nedflyttad: '+DIV[M.d0]+' → '+DIV[M.d1]:DIV[M.d1]}</div><button class="btn" data-c="toMenu">Spela igen</button>`;
+ return `<h2>${ttl}</h2>${ref}<div class="board"><div class="sc"><small>${esc(M.mn)}<br>${M.mo}</small><span id="scr">${dn?mg:my}–${dn?og:op}</span><small>${esc(M.on)}<br>${M.oo}</small></div><div class="clk" id="clk">${dn?'Slut':M.min+"'"}</div>${dn?'':vPitch()}${ctl}${end}<h3>Matchstatistik</h3><table class="stt" id="stt">${statsRows()}</table><div class="log" id="lg">${logHTML()}</div></div>`}
+function vModes(){const c=chS(),ok=chOK();
+ return `<h2>Spellägen</h2><p class="mut">Välj spelläge.</p><div class="packs">
+ <div class="mode"><h3>Squad Battles</h3><p class="mut">Möt botar i divisioner. Botarna blir tuffare för varje division.</p><div class="dv">${DIV[dI(S.pts.bt)]}</div><button class="btn" data-c="gm" data-a='["sb"]'>Spela</button></div>
+ <div class="mode"><h3>Online</h3><p class="mut">Möt andra spelare. Divisioner och rank.</p><div class="dv">${DIV[dI(S.pts.on)]}</div><button class="btn" data-c="gm" data-a='["on"]'>Spela</button></div>
+ <div class="mode"><h3>Champions</h3><p class="mut">Veckans tävling med kval och final. Kräver Div 7 online och Div 1 i Squad Battles.</p><div class="dv">${!ok?'🔒 Låst':c.ph==='q'?'Kval '+c.qw+'/3 vinster':c.ph==='f'?'Final: '+c.fw+' vinster':'Avslutad'}</div><button class="btn" data-c="gm" data-a='["ch"]'>Öppna</button></div></div>`}
+function vMatch(){
+ if(M.mode==='found')return vFound();
+ if(M.mode==='search')return `<h2>Söker motståndare…</h2><div class="board"><p>Du står i kö som <b>${esc(S.user)}</b>.</p><p>Matchen startar så fort en annan spelare söker samtidigt.</p>${M.lobby&&M.lobby.length?`<p>Spelare som söker nu:</p><div class="rw">${M.lobby.map(n=>`<span>${esc(n)}</span>`).join('')}</div>`:'<p class="mut">Ingen annan söker just nu…</p>'}<button class="btn g" data-c="cancelSearch">Avbryt</button></div>`;
+ if(M.mode==='play'||M.mode==='done')return vPlay();
+ if(!M.gm)return vModes();
+ const t=xi(),back=`<p><button class="btn g" data-c="gm" data-a='[null]'>← Spellägen</button></p>`;
+ const src=`<div class="row"><button class="btn g ${M.src==='club'?'on':''}" data-c="setSrc" data-a='["club"]'>Min trupp (Klubb)</button><button class="btn g ${M.src==='draft'?'on':''}" ${S.team?'':'disabled'} data-c="setSrc" data-a='["draft"]'>Senaste draftlaget</button></div>${t?'':'<p>Du behöver minst 11 spelare i klubben. Öppna fler pack i butiken.</p>'}<div class="d" style="font-size:22px">Lagrating ${t?ovr(t):'–'}</div>`;
+ if(M.gm==='sb')return `<h2>Squad Battles</h2>${back}<div class="board" style="text-align:left">${dvBox('Division',S.pts.bt)}<p class="mut">Botens lagrating ligger runt ${BL+dI(S.pts.bt)*2.2+4|0}. Vinn stort för fler mynt, förlora stort och du förlorar mynt.</p>${src}<button class="btn" ${t?'':'disabled'} data-c="vsBot">Spela match</button>${t?ext(t):''}</div>`;
+ if(M.gm==='on')return `<h2>Online</h2>${back}<div class="board" style="text-align:left">${dvBox('Division',S.pts.on)}<p class="mut">${DB&&U?'Du möter andra som är inloggade och har sidan öppen samtidigt.':'Online kräver att du är inloggad och har fått tillgång till sidan.'}</p>${src}<button class="btn" ${t&&DB&&U?'':'disabled'} data-c="findM">Hitta online-motståndare</button>${t?ext(t):''}</div>`;
+ return vChamp(back,src,t)}
+/* ---- champions ---- */
+const CHR=[{w:1,r:[{t:'coins',a:30000}]},{w:3,r:[{t:'coins',a:60000},{t:'pack',n:'Guldpack',q:2}]},{w:5,r:[{t:'coins',a:100000},{t:'pack',n:'Elitpack',q:2}]},{w:7,r:[{t:'coins',a:150000},{t:'pack',n:'Superelitpack',q:1},{t:'pack',n:'Hjältepack',q:1}]},{w:9,r:[{t:'coins',a:250000},{t:'pack',n:'Stjärnskott-pack',q:1},{t:'pack',n:'Mästarpack',q:1},{t:'player',min:90,max:93}]},{w:11,r:[{t:'coins',a:400000},{t:'pack',n:'Ikonpack',q:1},{t:'pack',n:'Futties-pack',q:1},{t:'player',min:93,max:95,k:'rand'}]},{w:13,r:[{t:'coins',a:700000},{t:'pack',n:'Futties Plus',q:1},{t:'player',min:95,max:97,k:'rand'}]},{w:15,r:[{t:'coins',a:1000000},{t:'pack',n:'Ikon Legend',q:1},{t:'player',min:96,max:98,k:'rand'}]}];
+function chS(){const w=wk();if(!S.ch||S.ch.w!==w)S.ch={w,ph:'q',qp:0,qw:0,fp:0,fw:0,cl:false};return S.ch}
+const chOK=()=>S.pts.on>=300&&S.pts.bt>=900;
+function chLine(){const c=chS();return c.ph==='q'?'Kval: '+c.qp+'/5 matcher, '+c.qw+'/3 vinster':c.ph==='f'?'Finals: '+c.fp+'/15 matcher, '+c.fw+' vinster':c.fw?'Champions klart: '+c.fw+' vinster':'Du klarade inte kvalet'}
+function champRes(win){const c=chS();if(c.ph==='q'){c.qp++;if(win)c.qw++;if(c.qw>=3)c.ph='f';else if(c.qp-c.qw>=3)c.ph='done'}else if(c.ph==='f'){c.fp++;if(win)c.fw++;if(c.fp>=15)c.ph='done'}}
+function startCh(){const c=chS();if(!chOK()||c.ph==='done')return;const t=xi();if(!t)return;const o=c.ph==='q'?84+c.qp*1.5:88+c.fp*.5,b=botTeam(Math.round(o)-4),r=simMatch(t,b);
+ startPlay({gm:'ch',online:false,me:'a',mn:S.user||'Du',tl:t,tr:b,on:'Bot · Champions '+(c.ph==='q'?'Kval '+(c.qp+1)+'/5':'Final '+(c.fp+1)+'/15'),mo:ovr(t),oo:ovr(b),...r})}
+function findCh(){const c=chS();if(!chOK()||c.ph==='done'||!xi())return;if(!DB||!U){startCh();return}M.gm='ch';findM();M.fb=setTimeout(()=>{if(M.mode==='search'&&M.gm==='ch'){cleanS();startCh()}},30000)}
+function chEnd(){const c=chS();if(c.ph==='f'){c.ph='done';save();render()}}
+function chClaim(){const c=chS(),t=CHR.filter(x=>x.w<=c.fw).pop();if(!t||c.cl||c.ph!=='done')return;c.cl=true;give(t.r);MSG='Champions-belöning hämtad: '+t.r.map(dsc).join(', ');save();render()}
+function vChamp(back,src,t){const c=chS(),ok=chOK(),on=S.pts.on,bt=S.pts.bt,tier=CHR.filter(x=>x.w<=c.fw).pop();
+ const rq=(l,v)=>`<div class="res ${v?'w':'l'}">${v?'✔':'✘'} ${l}</div>`;
+ return `<h2>Champions</h2>${back}<div class="board" style="text-align:left"><h3>Krav för att delta</h3>${rq('Online: Div 7 eller högre (nu '+DIV[dI(on)]+')',on>=300)}${rq('Squad Battles: Div 1 eller högre (nu '+DIV[dI(bt)]+')',bt>=900)}
+ <h3>Regler</h3><ul class="mut"><li>Champions spelas online mot andra spelare. Hittas ingen motståndare inom 30 sekunder får du en bot som ersättare.</li><li>Kval: 5 matcher. Vinn minst 3 för att nå Finals.</li><li>Finals: 15 matcher mot allt starkare motstånd. Belöningen beror på antal vinster.</li><li>Ingen oavgjord match: oavgjort efter 90 minuter avgörs på straffar.</li><li>En körning per vecka. Nollställs lördag 15:00 (om ${tlong(wkNext()-Date.now())}).</li></ul>
+ ${MSG?`<p class="w">${MSG}</p>`:''}${ok?`<div class="d" style="font-size:24px">${chLine()}</div>${src}${c.ph!=='done'?`<button class="btn" ${t?'':'disabled'} data-c="findCh">Hitta Champions-motståndare (online)</button> `:''}${c.ph==='f'&&c.fp>0?`<button class="btn g" data-c="chEnd">Avsluta nu</button>`:''}${c.ph==='done'&&c.fw>0&&!c.cl?`<button class="btn" data-c="chClaim">Hämta belöning (${tier?tier.w:0} vinster)</button>`:''}${c.cl?'<p class="w">Belöning hämtad.</p>':''}${t?ext(t):''}`:''}
+ <h3>Belöningar i Finals</h3>${CHR.map(x=>`<div class="ob ${c.fw>=x.w?'dn':''}"><b>${x.w} vinster</b><div class="rw">${x.r.map(r=>`<span>${dsc(r)}</span>`).join('')}</div></div>`).join('')}</div>`}
+/* ---- veckans mal ---- */
+function wkStart(d=new Date()){const s=new Date(d.getFullYear(),d.getMonth(),d.getDate(),15,0,0,0);s.setDate(s.getDate()-((d.getDay()-6+7)%7));if(s>d)s.setDate(s.getDate()-7);return s}
+const wk=()=>wkStart().getTime(),wkNext=()=>{const s=wkStart();s.setDate(s.getDate()+7);return s.getTime()};
+const tlong=ms=>{const s=Math.max(0,Math.floor(ms/1000)),d=Math.floor(s/86400),h=Math.floor(s%86400/3600),m=Math.floor(s%3600/60);const u=UN[CURL]||UN.sv;return(d?d+' '+u[0]+' ':'')+h+' '+u[1]+' '+m+' '+u[2]};
+const srng=sd=>()=>{sd=(sd+0x6D2B79F5)|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+function give(rs){rs.forEach(r=>{if(r.t==='coins')S.coins+=r.a;else if(r.t==='pack'){for(let i=0;i<r.q;i++)S.packs.push(r.n)}else{const k=r.k==='rand'?pk(['futties','totw','hero','star','mast']):r.k;S.club.push(mkc(pk(POS),rnd(r.min,r.max),k))}});save()}
+const dsc=r=>r.t==='coins'?'🪙 '+fmt(r.a):r.t==='pack'?r.q+'× '+r.n:'Spelare '+r.min+(r.max>r.min?'–'+r.max:'')+(r.k?' (special)':'');
+const RT={2:[{t:'coins',a:50000},{t:'pack',n:'Guldpack',q:3},{t:'player',min:84,max:88}],3:[{t:'coins',a:100000},{t:'pack',n:'Elitpack',q:2},{t:'player',min:88,max:91},{t:'player',min:85,max:88}],4:[{t:'coins',a:200000},{t:'pack',n:'Superelitpack',q:1},{t:'pack',n:'Hjältepack',q:1},{t:'player',min:92,max:95,k:'rand'},{t:'player',min:88,max:91}]};
+const R5=[{t:'coins',a:300000},{t:'pack',n:'Futties-pack',q:1},{t:'pack',n:'Ikonpack',q:1},{t:'player',min:94,max:96,k:'star'}];
+const OT=[{id:'w3',t:'Gör 12 mål på 3 matcher i rad',ty:'win',N:3,g:12,tr:2},{id:'w5',t:'Gör 20 mål på 5 matcher i rad',ty:'win',N:5,g:20,tr:3},{id:'w2',t:'Gör 8 mål på 2 matcher i rad',ty:'win',N:2,g:8,tr:4},
+{id:'s7',t:'Vinn 7 matcher i rad',ty:'str',g:7,tr:3},{id:'s10',t:'Vinn 10 matcher i rad',ty:'str',g:10,tr:4},
+{id:'sb12',t:'Vinn 12 Squad Battles-matcher i Div 6 eller högre',ty:'cnt',k:'sbh',g:12,tr:3},{id:'on8',t:'Vinn 8 online-matcher',ty:'cnt',k:'onw',g:8,tr:3},
+{id:'cs6',t:'Håll nollan 6 gånger',ty:'cnt',k:'cs',g:6,tr:2},{id:'big4',t:'Vinn med minst 4 mål 4 gånger',ty:'cnt',k:'big',g:4,tr:3},{id:'op25',t:'Öppna 25 pack',ty:'cnt',k:'open',g:25,tr:2},
+{id:'dr3',t:'Vinn alla 4 matcher i Draft 3 gånger',ty:'cnt',k:'draft',g:3,tr:3},{id:'sl6',t:'Sälj 6 kort på marknaden',ty:'cnt',k:'sold',g:6,tr:2},
+{id:'ch10',t:'Vinn 10 Champions-matcher',ty:'cnt',k:'chw',g:10,tr:4},{id:'gl80',t:'Gör 80 mål totalt',ty:'cnt',k:'goals',g:80,tr:2},{id:'w30',t:'Vinn 30 matcher',ty:'cnt',k:'wins',g:30,tr:3}];
+let _wo=null;
+function weekObjs(){const w=wk();if(_wo&&_wo.w===w)return _wo.l;const R=srng(Math.floor(w/1000)),a=[...OT];for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
+ const l=a.slice(0,8).sort((x,y)=>x.tr-y.tr);l.push({id:'meta',t:'Slutför 5 av veckans 8 mål',ty:'meta',g:5,tr:5});_wo={w,l};return l}
+function obS(){const w=wk();if(!S.ob||S.ob.w!==w)S.ob={w,c:{},d:{},p:{cnt:{},str:0,smax:0,last:[],best:{}}};return S.ob}
+const prog=ob=>{const o=obS(),p=o.p;return ob.ty==='cnt'?(p.cnt[ob.k]||0):ob.ty==='str'?(p.smax||0):ob.ty==='win'?(p.best[ob.N]||0):weekObjs().filter(x=>x.ty!=='meta'&&o.d[x.id]).length};
+function track(ev){const o=obS(),p=o.p,inc=(k,n=1)=>{p.cnt[k]=(p.cnt[k]||0)+n};
+ if(ev.open)inc('open',ev.open);if(ev.draft===4)inc('draft');if(ev.sold)inc('sold',ev.sold);
+ if(ev.gf!==undefined){inc('goals',ev.gf);
+  if(ev.win){inc('wins');p.str=(p.str||0)+1;p.smax=Math.max(p.smax||0,p.str);if(ev.ga===0)inc('cs');if(ev.gf-ev.ga>=4)inc('big');if(ev.gm==='on')inc('onw');if(ev.gm==='sb'&&ev.dv>=4)inc('sbh');if(ev.gm==='ch')inc('chw')}else p.str=0;
+  p.last=[...(p.last||[]),ev.gf].slice(-5);[2,3,5].forEach(N=>{if(p.last.length>=N)p.best[N]=Math.max(p.best[N]||0,p.last.slice(-N).reduce((a,b)=>a+b,0))})}
+ weekObjs().forEach(ob=>{if(!o.d[ob.id]&&prog(ob)>=ob.g)o.d[ob.id]=1});save()}
+const claimable=()=>{const o=obS();return weekObjs().some(ob=>o.d[ob.id]&&!o.c[ob.id])};
+function claim(id){const ob=weekObjs().find(x=>x.id===id),o=obS();if(!ob||!o.d[id]||o.c[id])return;o.c[id]=1;const rs=ob.ty==='meta'?R5:RT[ob.tr];give(rs);MSG='Belöning hämtad: '+rs.map(dsc).join(', ');save();render()}
+function vObj(){const o=obS(),L=weekObjs();
+ return `<h2>Mål</h2><p class="mut">Veckans mål är riktigt svåra och nollställs varje lördag 15:00 (om ${tlong(wkNext()-Date.now())}). Ohämtade belöningar försvinner då. Vunna pack hamnar under "Dina pack" i Butiken.</p>${MSG?`<p class="w">${MSG}</p>`:''}${L.map(ob=>{const pr=Math.min(ob.g,prog(ob)),done=!!o.d[ob.id],cl=!!o.c[ob.id],rs=ob.ty==='meta'?R5:RT[ob.tr];
+  return `<div class="ob ${done?'dn':''}"><b>${ob.t}</b><div class="bar"><i style="width:${100*pr/ob.g}%"></i></div><span class="mut">${pr}/${ob.g}</span><div class="rw">${rs.map(r=>`<span>${dsc(r)}</span>`).join('')}</div>${cl?'<span class="w">Hämtad</span>':`<button class="btn" ${done?'':'disabled'} data-c="claim" data-a='["${ob.id}"]'>Hämta belöning</button>`}</div>`}).join('')}`}
+/* ---- transfermarknad ---- */
+const MD=[['5 min',3e5],['30 min',18e5],['2 tim',72e5]];
+const tl=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return s>=3600?Math.floor(s/3600)+'h '+Math.floor(s%3600/60)+'m':Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+let MK=[],MKready=false,G=new Set(),LST=null,MF='all',MSG='';
+const mdoc=id=>DB.doc('market/'+id),del=id=>mdoc(id).delete().catch(()=>{});
+function subMarket(){DB.collection('market').onSnapshot(snap=>{MK=snap.docs.map(d=>d.data()).filter(Boolean);MKready=true;settle();const a=document.activeElement;if(view==='market')rr()},()=>{})}
+function wr(id,patch,after){if(G.has(id))return;G.add(id);mdoc(id).update(patch).then(()=>{if(after)after()}).catch(()=>{}).finally(()=>G.delete(id))}
+function settle(){if(!DB||!U||!MKready)return;const now=Date.now();
+ for(const d of MK){if(G.has(d.id))continue;const mine=d.seller===U;
+  if(d.sold){
+   if(d.sellerPaid&&d.buyerGot){if(mine||d.buyer===U)del(d.id);continue}
+   if(mine&&!d.sellerPaid){if(!S.paid[d.id]){S.paid[d.id]=1;S.coins+=Math.round(d.price*.95);MSG='Ett av dina kort såldes för 🪙 '+fmt(d.price)+'.';track({sold:1});save();rr()}wr(d.id,{sellerPaid:true});continue}
+   if(d.buyer===U&&!d.buyerGot){if(!S.got[d.id]){S.got[d.id]=1;S.club.push(d.card);delete S.bids[d.id];MSG='Du vann ett kort på marknaden!';save();rr()}wr(d.id,{buyerGot:true});continue}
+   continue}
+  if(now>d.ends){
+   if(d.bidder&&(mine||d.bidder===U)){wr(d.id,{sold:true,buyer:d.bidder,price:d.bid,buyerGot:false,sellerPaid:false});continue}
+   if(!d.bidder&&mine){if(!S.got['x'+d.id]){S.got['x'+d.id]=1;S.club.push(d.card);MSG='Ett kort sålde inte och är tillbaka i klubben.';save();rr()}del(d.id)}}}
+ for(const id of Object.keys(S.bids)){const d=MK.find(x=>x.id===id);if(!d||(d.sold?d.buyer!==U:d.bidder!==U)){S.coins+=S.bids[id];delete S.bids[id];save();rr()}}}
+function bid(id){const d=MK.find(x=>x.id===id),el=document.getElementById('bid_'+id);if(!d||!U||!el||G.has(id))return;
+ const a=Math.round(+el.value),min=Math.max(d.start,d.bidder?Math.ceil(d.bid*1.05):0),old=S.bids[id]||0;
+ if(d.sold||Date.now()>d.ends)MSG='Annonsen är avslutad.';
+ else if(!(a>=min))MSG='Minsta bud är 🪙 '+fmt(min)+'.';
+ else if(a-old>S.coins)MSG='Du har inte råd.';
+ else if(a>=d.buy)return buyNow(id);
+ else{wr(id,{bid:a,bidder:U,bname:(S.user||'Manager-'+U.slice(0,4))},()=>{S.coins-=a-(S.bids[id]||0);S.bids[id]=a;MSG='Bud lagt: 🪙 '+fmt(a);save();render()});return}
+ render()}
+function buyNow(id){const d=MK.find(x=>x.id===id);if(!d||!U||G.has(id))return;const old=S.bids[id]||0;
+ if(d.seller===U||d.sold||Date.now()>d.ends){MSG='Annonsen är avslutad.';render();return}
+ if(d.buy-old>S.coins){MSG='Du har inte råd.';render();return}
+ G.add(id);mdoc(id).update({sold:true,buyer:U,price:d.buy,buyerGot:false,sellerPaid:false}).then(()=>mdoc(id).get()).then(sn=>{const x=sn.data();
+  if(x&&x.sold&&x.buyer===U){S.coins-=d.buy-old;delete S.bids[id];if(!S.got[id]){S.got[id]=1;S.club.push(x.card)}MSG='Köpt för 🪙 '+fmt(d.buy)+'!';save();render();return mdoc(id).update({buyerGot:true})}
+  MSG='Någon hann före dig.';render()}).catch(()=>{MSG='Köpet misslyckades.';render()}).finally(()=>G.delete(id))}
+function lstOpen(id){const c=S.club.find(x=>x.id===id);if(!c)return;const r=n=>Math.max(100,Math.round(n/100)*100);LST={id,start:r(val(c)*.8),buy:r(val(c)*1.2),dur:18e5};render();scrollTo(0,0)}
+function lstForm(){if(!LST)return '';const c=S.club.find(x=>x.id===LST.id);if(!c){LST=null;return ''}
+ return `<div class="board" style="text-align:left;margin-bottom:12px"><h3>Lägg ut ${c.n} (${c.r})</h3><div class="cards" style="justify-content:flex-start">${card(c)}<div class="li"><span class="mut">Värde 🪙${fmt(val(c))}</span><label>Startbud <input id="l_start" type="number" min="100" value="${LST.start}" data-h="lstSet" data-a='["start"]'></label><label>Köp nu-pris <input id="l_buy" type="number" min="100" value="${LST.buy}" data-h="lstSet" data-a='["buy"]'></label><label>Tid <select id="l_dur" data-h="lstSet" data-a='["dur"]'>${MD.map(([t,ms])=>`<option value="${ms}" ${LST.dur===ms?'selected':''}>${t}</option>`).join('')}</select></label><span class="mut">Du får 95 % när kortet säljs.</span>${LST.err?`<span class="l">${LST.err}</span>`:''}<div class="row"><button class="btn" ${DB&&U?'':'disabled'} data-c="listCard">Lägg ut</button><button class="btn g" data-c="lstCancel">Avbryt</button></div>${DB&&U?'':'<span class="mut">Marknaden kräver inloggning.</span>'}</div></div></div>`}
+function listCard(){const L=LST,c=L&&S.club.find(x=>x.id===L.id);if(!c||!DB||!U||G.has('new'))return;
+ const st=Math.max(100,Math.round(+L.start)||0),by=Math.max(st,Math.round(+L.buy)||0),id=U.slice(0,6)+'_'+Date.now();G.add('new');
+ mdoc(id).set({id,seller:U,sname:(S.user||'Manager-'+U.slice(0,4)),card:c,start:st,buy:by,bid:0,bidder:null,bname:'',ends:Date.now()+L.dur,sold:false})
+ .then(()=>{S.club=S.club.filter(x=>x.id!==c.id);save();LST=null;MF='mine';view='market';MSG='Kortet är utlagt.';render()}).catch(()=>{L.err='Det gick inte att lägga ut kortet.';render()}).finally(()=>G.delete('new'))}
+function withdraw(id){const d=MK.find(x=>x.id===id);if(!d||d.bidder||d.seller!==U||G.has(id))return;G.add(id);
+ mdoc(id).get().then(sn=>{const x=sn.data();if(!x||x.bidder||x.sold)throw 0;return mdoc(id).delete()}).then(()=>{S.club.push(d.card);MSG='Annonsen är borttagen.';save();render()}).catch(()=>{MSG='Går inte att dra tillbaka (någon har budat).';render()}).finally(()=>G.delete(id))}
+function npcList(){const b=Math.floor(Date.now()/12e5);let sd=(b*2654435761)>>>0;const R=()=>{sd=(sd+0x6D2B79F5)|0;let t=Math.imul(sd^sd>>>15,1|sd);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+ const o=Math.random,out=[];Math.random=R;try{for(let i=0;i<10;i++){const r=i<2?rnd(93,99):rnd(78,95),k=R()<.3?pk(['futties','totw','hero','icon','star','mast']):undefined,c=mkc(pk(POSM),r,k);c.id='npc'+b+'_'+i;
+  out.push({id:c.id,npc:1,card:c,buy:Math.max(100,Math.round(val(c)*(1.05+R()*.35)/100)*100),seller:'bot',sname:'Marknadsbot',ends:(b+1)*12e5})}}finally{Math.random=o}
+ return out.filter(x=>!S.npcB[x.id])}
+function buyNpc(id){const d=npcList().find(x=>x.id===id);if(!d||S.coins<d.buy)return;S.coins-=d.buy;S.club.push(d.card);S.npcB[id]=1;MSG='Köpt av Marknadsbot för 🪙 '+fmt(d.buy)+'!';save();render()}
+function lstHTML(d){const me=d.seller===U,min=Math.max(d.start||0,d.bidder?Math.ceil(d.bid*1.05):0),mb=d.bidder===U;
+ return `<div class="lst">${card(d.card)}<div class="li"><b>${esc(d.sname)}${me?' (du)':''}</b><span class="mut">Värde 🪙${fmt(val(d.card))}</span>${d.npc?'':`<span>${d.bidder?'Högsta bud 🪙'+fmt(d.bid)+(mb?' (du)':''):'Startbud 🪙'+fmt(d.start)}</span>`}<span>Köp nu 🪙${fmt(d.buy)}</span><span>Tid kvar <b class="tl" data-e="${d.ends}">${tl(d.ends-Date.now())}</b></span>${d.npc?`<button class="btn" ${S.coins<d.buy?'disabled':''} data-c="buyNpc" data-a='["${d.id}"]'>Köp nu</button>`:me?(d.bidder?'<span class="mut">Har bud</span>':`<button class="btn g" data-c="withdraw" data-a='["${d.id}"]'>Dra tillbaka</button>`):`<div class="row"><input id="bid_${d.id}" type="number" value="${min}" min="${min}"><button class="btn g" data-c="bid" data-a='["${d.id}"]'>Buda</button><button class="btn" data-c="buyNow" data-a='["${d.id}"]'>Köp nu</button></div>`}</div></div>`}
+function vMarket(){const now=Date.now(),live=MK.filter(d=>!d.sold&&now<d.ends);let L=[...npcList(),...live];
+ if(MF==='mine')L=live.filter(d=>d.seller===U);else if(MF==='bids')L=live.filter(d=>S.bids[d.id]);
+ L.sort((a,b)=>a.ends-b.ends);
+ return `<h2>Transfermarknad</h2><div class="row">${[['all','Alla'],['mine','Mina annonser'],['bids','Mina bud']].map(([k,t])=>`<button class="btn g ${MF===k?'on':''}" data-c="setMF" data-a='["${k}"]'>${t}</button>`).join('')}</div><p class="mut">Lägg ut kort från Klubben. Andra spelare ser dem här och kan buda eller köpa direkt. Marknadsbot har alltid några kort. Avgift 5 % när du säljer.${DB&&U?'':' Spelarmarknaden kräver inloggning.'}</p>${MSG?`<p class="w">${MSG}</p>`:''}${L.map(lstHTML).join('')||'<p>Inga annonser här just nu.</p>'}`}
+setInterval(()=>{document.querySelectorAll('.tl').forEach(e=>{e.textContent=tl(+e.dataset.e-Date.now())});document.querySelectorAll('.cd').forEach(e=>{e.textContent=Math.max(0,Math.ceil((+e.dataset.e-Date.now())/1000))})},1000);
+setInterval(()=>{if(DB&&U&&MKready)settle()},5000);
+const H={autoSq,bid,buy,buyNow,buyNpc,cancelSearch,chClaim,chEnd,choose,claim,closeP,closePick,cv,dEnd,dform,findCh,findM,flipC,foundGo,gm,listCard,lstCancel,lstOpen,lstSet,nav,nextP,o2,openAll,openStored,pick,pickD,pickLang,pickLater,playD,put,qty,resumePicks,sell,setForm,setLang,setMF,setSpd,setSrc,skip,startD,startGame,toClub,toMenu,togglePause,unpick,vsBot,withdraw};
+const runH=(t,k,extra)=>{const f=H[t.dataset[k]];if(!f)return;let a=[];try{a=JSON.parse(t.dataset.a||'[]')}catch(_){}try{f(...a,...extra)}catch(err){NOTE='Något gick fel: '+(err&&err.message||err);render()}};
+document.addEventListener('click',e=>{const t=e.target.closest&&e.target.closest('[data-c]');if(t)runH(t,'c',[])});
+document.addEventListener('change',e=>{const t=e.target.closest&&e.target.closest('[data-h]');if(t)runH(t,'h',[t.value])});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target&&e.target.id==='uname')startGame()});
+window.addEventListener('error',()=>{NOTE='Ett fel inträffade. Ladda om sidan om något ser konstigt ut.'});
+setInterval(()=>{if(view==='obj'||(view==='match'&&M.mode!=='play'))rr()},30000);
+$('langsel').innerHTML=LANGS.map(([c,f,n])=>`<option value="${c}">${f} ${n}</option>`).join('');
+render();
+})()/*IIFE_END*/;
+</script></body></html>
